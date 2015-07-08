@@ -1,0 +1,17 @@
+---
+title: "Expected_FAQs"
+author: "Jillian Dunic"
+date: "July 8, 2015"
+output: html_document
+---
+
+*How do you show the 80 character line?*
+Preferences -> Code Editing -> Show margin
+
+*How do you get your text files to wrap/stop at the 80 character mark?*
+Preferences -> Code Editing -> Soft-wrap R source files
+
+
+*Why does your terminal have a nice coloured indication of your git information?*
+Checkout this on github to figure out how to set this up for yourself.
+https://github.com/jimeh/git-aware-prompt

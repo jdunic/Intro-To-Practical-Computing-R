@@ -1,0 +1,72 @@
+---
+title: "01 Setting up R"
+author: "Jillian Dunic"
+date: "July 8, 2015"
+output: html_document
+---
+
+I'm assuming that you have installed R and Rstudio by now. If you have had any problems, please start an issue on the Github page or, if we haven't gotten there yet, send me an email.
+
+*It is also a good practice to make a directory that contains all of your R projects in one place. I have a directory called R_projects.
+
+*Rstudio projects*
+
+Let's start by creating an Rstudio project. A project is basically a special folder that contains all of the work that you do in Rstudio in that project file. It helps your keep your different projects organised. I suggest that you create a project that will contain all of the work that you do in this course. I use projects to keep track of the code for my manuscripts and R packages that I may be working on. 
+
+When you open Rstudio you can create a new project by:
+File -> New project
+
+You'll be prompted with a dialog box
+
+![New project dialog box. Make sure you create a git repository (it will create a local repo).](/images/Rstudio_create_new_project.png)
+
+We just met git the other day. Be sure that you create a local git repository so that we can keep track of our changes! We'll push it to an online repository shortly.
+
+
+*Rmarkdown (html)*
+
+Before we jump into coding, let's just make our first text file. We're going to start with a special type of file called Rmarkdown. These types of text files are great! They allow us to write text and embed code, the results of that code, and input figures! It is how I have created this walk-through. We'll start with an html document. These are the most flexible and can be converted to a PDF or MS Word document later. 
+
+Let's create our first Rmarkdown file. This is easy in Rstudio!
+File -> New file -> Rmarkdown...
+
+Now fill in the title of your document and your name. For now let's select the HTML option. 
+
+Now you should have an R Markdown document! You can modify the information at the top of the script as you'd like. You can also start one of these from scratch as just a raw text file but Rstudio sets it up nicely for you :)
+
+*Tracking our changes -- let's use git!*
+
+Instead of using git within Rstudio, let's get more practice using the command line/terminal. 
+
+Let's open terminal or iTerm (this is a terminal app that I prefer to use but the default terminal is just fine!)
+
+**If you are on a Windows machine you can access a terminal (instructions from http://smallbusiness.chron.com/open-terminal-session-windows-7-56627.html)
+**By keyboard**: 'Press "Win-R," type "cmd" and press "Enter" to open a Command Prompt session using just your keyboard.'
+**By mouse**: 'Click the "Start | Program Files | Accessories | Command Prompt" to open a Command Prompt session using just your mouse.'
+
+
+Exercise:
+How do we change directories via the terminal?
+A: cd dir_name
+
+
+
+How do we setup a remote repository on Github?
+
+
+
+Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+summary(cars)
+```
+
+You can also embed plots, for example:
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
