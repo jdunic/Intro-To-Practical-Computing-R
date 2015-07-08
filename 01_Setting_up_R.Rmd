@@ -18,7 +18,7 @@ File -> New project
 
 You'll be prompted with a dialog box
 
-![New project dialog box. Make sure you create a git repository (it will create a local repo).](/images/Rstudio_create_new_project.png)
+![New project dialog box. Make sure you create a git repository (it will create a local repo).](/images/Rstudio_images/Rstudio_create_new_project.png)
 
 We just met git the other day. Be sure that you create a local git repository so that we can keep track of our changes! We'll push it to an online repository shortly.
 
@@ -49,24 +49,23 @@ Exercise:
 How do we change directories via the terminal?
 A: cd dir_name
 
+What's the first thing we should do when we go to use git?
+A: Check the git status and check what branch we are on. We can do this with 
+> git status
 
+![New project dialog box. Make sure you create a git repository (it will create a local repo).](/images/Rstudio_images/Rstudio_create_new_project.png)
+
+
+How do we make a local commit?
+A: See the git cheatsheet for more commands.
+git add file_name
+git commit -m 'type your message here'
+
+*if you would like to add all the files you can use
+git add *
 
 How do we setup a remote repository on Github?
 
 
 
-Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r}
-summary(cars)
-```
-
-You can also embed plots, for example:
-
-```{r, echo=FALSE}
-plot(cars)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
