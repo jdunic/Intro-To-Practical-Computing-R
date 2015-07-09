@@ -28,6 +28,14 @@ https://www.rstudio.com/products/rstudio/download/
 Follow the instructions here to install git on your machine
 https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
+*Create a Github account and request an education account*
+Please create an account even if you cannot install git on your local computer.
+
+https://github.com/
+
+Request an education discount here ASAP. These take time to process. 
+https://education.github.com/discount_requests/new
+
 
 If you have problems installing these programs prior to class. Please email me asap. We will have some time dedicated at the start of class to troubleshooting. For those of you who already have some experience with these programs, please assist your neighbours in class who may be having troubles.
 
@@ -35,22 +43,15 @@ If you are successful in setting up your computer and would like to get your fee
 
 Follow the information at this link to start working with Swirl: http://swirlstats.com/students.html
 
-*Terminal Tinkering*
+
+------------------------------------------------------------------------------------------
+
+*Terminal Tinkering -- for Mac and Linux users only*
 Please attempt to play, even for 10 minutes with your terminal. This may be completely new to most of you. **
 
 *Opening a terminal*
 Mac
 Type 'terminal' into spotlight
-
-
-Windows Users 
-**By keyboard**: 'Press "Win-R," type "cmd" and press "Enter" to open a Command Prompt session using just your keyboard.'
-
-OR
-
-**By mouse**: 'Click the "Start | Program Files | Accessories | Command Prompt" to open a Command Prompt session using just your mouse.'
-
-see more detailed instructions at http://smallbusiness.chron.com/open-terminal-session-windows-7-56627.html
 
 Now that you have a terminal open try the following commands (note you do not type the carrot '>'):
 
@@ -75,7 +76,6 @@ Go back to the directory one level up:
 More commands can be found here if you are interested in learning more. But for now I just want you to have some exposure. Note - a directory is just a folder. 
 http://cli.learncodethehardway.org/book/ex1.html
 
-**If you struggle to open a terminal. Follow the instructions here: http://cli.learncodethehardway.org/book/ex1.html
 
 
 
