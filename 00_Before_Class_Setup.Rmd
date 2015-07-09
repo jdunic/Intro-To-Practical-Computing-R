@@ -1,0 +1,36 @@
+---
+title: "00 Before Class Setup"
+author: "Jillian Dunic"
+date: "July 8, 2015"
+output: html_document
+---
+
+Please install the following programs prior to coming to class. 
+
+*Install R*
+
+Mac
+http://cran.r-project.org/bin/macosx/
+
+Windows
+http://cran.r-project.org/bin/windows/base/
+
+Linux (Ubuntu)
+http://cran.r-project.org/bin/linux/ubuntu/README
+
+*Install Rstudio*
+
+All platform downloads available here
+https://www.rstudio.com/products/rstudio/download/
+
+*Install git*
+
+Follow the instructions here to install git on your machine
+https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+
+
+If you have problems installing these programs prior to class. Please email me asap. We will have some time dedicated at the start of class to troubleshooting. For those of you who already have some experience with these programs, please assist your neighbours in class who may be having troubles.
+
+If you are successful in setting up your computer and would like to get your feet wet in R, you can also install the package 'Swirl' and try some of the interactive tutorials. 
+
+Follow the information at this link to start working with Swirl: http://swirlstats.com/students.html
