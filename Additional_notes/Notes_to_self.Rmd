@@ -1,0 +1,23 @@
+---
+title: "Notes to self"
+output: html_document
+---
+
+Useful sheets to have on hand (printouts) for students:
+Git cheatsheet
+Rmarkdown cheatsheet
+Data visualisation cheatsheet
+Data wrangling cheatsheet
+Shiny cheatsheet
+
+```{r}
+summary(cars)
+```
+
+You can also embed plots, for example:
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
