@@ -30,25 +30,32 @@ This should work 'out of the box' but if not contact me asap.
 \  
 
 ##### Windows 
-Follow the instructions here to install git on your machine
-https://git-scm.com/book/en/v2/Getting-Started-Installing-Git  
+Download git for Windows from here and run the installer.
+https://git-for-windows.github.io/
 \  
+
+##### Linux
+You will most likely use your standard package-manager 
+
+Debian-based/Ubuntu:
+sudo apt-get install git
+\  
+Fedora:
+sudo yum install git
 \  
 
 #### 4) Create a Github account and request an education account
 
 Please create an account even if you cannot install git on your local computer.
 https://github.com/
+\  
 
-Request an education discount here ASAP. These take time to process. 
+Request an education discount! You get free stuff! I recommend requesting your educational discount now, as these take time to process. 
 https://education.github.com/discount_requests/new
+\  
 
-
-
-Windows users
-
-Cygwin
-- unix-like command line interface
+#### Special Note for Windows users
+Because I want to introduce the shell/terminal/command line, you will need to install Cygwin, a Unix-like command line interface. 
 
 Because I want to introduce you to using the terminal, we will need to install Cygwin, a Unix-like command line interface. This 
 
