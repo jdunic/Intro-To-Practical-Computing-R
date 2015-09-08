@@ -111,7 +111,7 @@ This should put you in your home directory
 ls -a
 ~~~
 
-*Change directory (choose one of the directories that you found in ls -a)*
+*Change directory (type the name of one of the directories that you found in ls -a)*
 
 ~~~
 cd type_directory_name_or_path_here
