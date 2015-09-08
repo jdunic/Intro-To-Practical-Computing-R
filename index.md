@@ -1,7 +1,7 @@
 ---
 layout: page
-title: simple site
-tagline: Easy websites with GitHub Pages
+title: Practical Computing in R
+tagline: An introductory class
 description: Minimal tutorial on making a simple website with GitHub Pages
 ---
 

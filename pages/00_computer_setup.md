@@ -3,12 +3,13 @@ layout: page
 title: Installations and computer setup
 description: Checklist of software to be installed for September 9th. 
 ---
-\  
+  
 
 ### Please install the following programs prior to coming to class.  
-\  
+  
 
 #### 1) Install R
+
 OS              | R                                            |
 --------------- | -------------------------------------------- |
 Mac             | http://cran.r-project.org/bin/macosx/        |
@@ -20,7 +21,7 @@ Linux (Ubuntu)  | https://cran.r-project.org/bin/linux/ubuntu/ |
 
 All platform downloads available here
 https://www.rstudio.com/products/rstudio/download/  
-\  
+  
 
 #### 3) Install Git
 If you are using a Mac or Windows, you can install the latest versions of git from the following links. Download and run the installers. In most cases this should work. However, if it does not, send me an email asap. 
@@ -30,8 +31,6 @@ OS              | Git                                          |
 Mac             | http://git-scm.com/downloads                 |
 Windows         | https://git-for-windows.github.io/           |
 
-\  
-\  
 
 ##### **Linux**
 You will most likely use your standard package-manager 
@@ -46,23 +45,22 @@ Fedora                     | sudo yum install git           |
 
 Please create an account even if you cannot install git on your local computer.  
 https://github.com/  
-\  
+
 
 #### 5) Free stuff!
 On Github Request an education discount! They have created a student developer pack with free access to various tools that are worth checking out! I recommend requesting your educational discount now, as these take time to process. 
 https://education.github.com/discount_requests/new  
-\  
-\  
+
+
 
 #### Troubleshooting
 If you have problems installing these programs prior to class. Please email me asap. We will have some time dedicated at the start of class to troubleshooting. For those of you who already have some experience with these programs, please assist your neighbours in class who may be having troubles.  
-\  
-\  
+
+
 
 #### Success and more?
 If you are successful in setting up your computer and would like to get your feet wet in R, you can also install the package 'Swirl' and try some of the interactive tutorials. 
-\  s
-\  
+
 
 Follow the information at this link to start working with Swirl: http://swirlstats.com/students.html
 
@@ -75,8 +73,7 @@ Please attempt to play, even for 10 minutes with your terminal. This may be comp
 #####Opening a terminal
 Mac  
 Type 'terminal' into spotlight  
-\  
-\  
+
 
 Now that you have a terminal open try the following commands  
 
