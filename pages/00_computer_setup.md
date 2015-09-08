@@ -88,6 +88,8 @@ Follow the information at this link to start working with Swirl: http://swirlsta
 ####Terminal Tinkering -- for Mac and Linux users only
 Please attempt to play, even for 10 minutes with your terminal. This may be completely new to most of you.
 
+**Note** - a directory is just a folder. 
+
 #####Opening a terminal
 Mac  
 Type 'terminal' into spotlight  
@@ -109,7 +111,7 @@ This should put you in your home directory
 ls -a
 ~~~
 
-*Change directory*
+*Change directory (choose one of the directories that you found in ls -a)*
 
 ~~~
 cd type_directory_name_or_path_here
@@ -127,7 +129,7 @@ pwd
 cd ..
 ~~~
 
-More commands can be found here if you are interested in learning more. But for now I just want you to have some exposure. Note - a directory is just a folder. 
+More commands can be found here if you are interested in learning more. But for now I just want you to have some exposure. 
 http://cli.learncodethehardway.org/book/ex1.html
 
 
