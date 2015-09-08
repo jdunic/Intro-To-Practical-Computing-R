@@ -10,6 +10,7 @@ description: Checklist of software to be installed for September 9th.
 
 #### 1) Install R
 
+{:.table}
 OS              | R                                            |
 --------------- | -------------------------------------------- |
 Mac             | http://cran.r-project.org/bin/macosx/        |
@@ -26,6 +27,7 @@ https://www.rstudio.com/products/rstudio/download/
 #### 3) Install Git
 If you are using a Mac or Windows, you can install the latest versions of git from the following links. Download and run the installers. In most cases this should work. However, if it does not, send me an email asap. 
 
+{:.table}
 OS              | Git                                          |
 --------------- | -------------------------------------------- |
 Mac             | http://git-scm.com/downloads                 |
@@ -35,6 +37,7 @@ Windows         | https://git-for-windows.github.io/           |
 ##### **Linux**
 You will most likely use your standard package-manager 
 
+{:.table}
 Distro                     | command                        |
 -------------------------- | ------------------------------ |
 Debian-based/Ubuntu        | sudo apt-get install git       |
@@ -78,29 +81,36 @@ Type 'terminal' into spotlight
 Now that you have a terminal open try the following commands  
 
 *Change directory*
-```
+
+~~~
 cd ~  
-```
+~~~
+
 This should put you in your home directory
 
 *List the files in your directory*
-```
+
+~~~
 ls -a
-```
+~~~
 
 *Change directory*
-```
+
+~~~
 cd type_directory_name_or_path_here
-```
+~~~
 
 *Get the path to your current directory*
-```
+
+~~~
 pwd
-```
+~~~
+
 *Go back to the directory one level up*
-```
+
+~~~
 cd ..
-```
+~~~
 
 More commands can be found here if you are interested in learning more. But for now I just want you to have some exposure. Note - a directory is just a folder. 
 http://cli.learncodethehardway.org/book/ex1.html
