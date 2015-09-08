@@ -8,15 +8,14 @@ highlighter: pygments
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : simple site
+title : Intro to Practical Computing in R
 author :
-  name : Karl Broman
-  email : kbroman@gmail.com
-  github : kbroman
-  twitter : kwbroman
-  feedburner : nil
+  name : Jillian Dunic
+  email : jdunic@gmail.com
+  github : jdunic
+  twitter : jdunic
 
-production_url : http://kbroman.github.io/simple_site
+production_url : http://jdunic.github.io/Intro-To-Practical-Computing-R
 
 # Tell Github to use the kramdown markdown interpreter
 # (see https://help.github.com/articles/migrating-your-pages-site-from-maruku)
@@ -49,7 +48,7 @@ JB :
   #   - Only the following values are falsy: ["", null, false]
   #   - When setting BASE_PATH it must be a valid url.
   #     This means always setting the protocol (http|https) or prefixing with "/"
-  BASE_PATH : http://kbroman.org/simple_site
+  BASE_PATH : http://jdunic.github.io/Intro-To-Practical-Computing-R
 
   # By default, the asset_path is automatically defined relative to BASE_PATH plus the enabled theme.
   # ex: [BASE_PATH]/assets/themes/[THEME-NAME]
