@@ -131,11 +131,11 @@ pwd
 ~~~
 cd ..
 ~~~
-
-**Did any of you have any errors that came up?**
+  
+###Did any of you have any errors that came up?
 
 "No such file or directory"
-One possible error is that when you typed in a directory name it contained spaces or some other special character. This error occurred because a space is considered to be a special character. Other special characters include things like $, *, /. In order to include them in a string (a normal set of letters or numbers) you must escape them by putting a backslash, \, in front of them. E.g:
+One possible error is that when you typed in a directory name it contained spaces or some other special character. This error occurred because a space is considered to be a special character. Other special characters include things like $, *, /. In order to include them in a string (a normal set of letters or numbers) you must escape them by putting a backslash, \, in front of them. E.g:  
 
 ~~~
 cd my\ filename\ with\ spaces
@@ -143,7 +143,7 @@ cd my\ filename\ with\ spaces
 
 Another, usually easier option is to use **tab completion**. We can demo that in class since we'll use it often. All you do is start typing a word, hit tab, and the terminal will try and auto-complete what you've typed. That way you don't have to worry about dealing with the escapes.
 
-A list of special characters in the terminal (specifically a Bash terminal) can be found [here](http://mywiki.wooledge.org/BashGuide/SpecialCharacters)
+A list of special characters in the terminal (specifically a Bash terminal) can be found [here](http://mywiki.wooledge.org/BashGuide/SpecialCharacters)  
 
 ####Further reading for terminal use
 More commands can be found here if you are interested in learning more. But for now I just want you to have some exposure. 
