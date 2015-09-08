@@ -34,6 +34,9 @@ Mac             | http://git-scm.com/downloads                 |
 Windows         | https://git-for-windows.github.io/           |
 
 
+*Possible error message*
+If you're on a Mac and you the the error: "App can't be opened because it is from an unidentified developer", right-click the application and choose 'Open'. Then click the 'Open' button at the next dialogue warning.  
+
 ##### **Linux**
 You will most likely use your standard package-manager 
 
@@ -129,8 +132,22 @@ pwd
 cd ..
 ~~~
 
+**Did any of you have any errors that came up?**
+
+"No such file or directory"
+One possible error is that when you typed in a directory name it contained spaces or some other special character. This error occurred because a space is considered to be a special character. Other special characters include things like $, *, /. In order to include them in a string (a normal set of letters or numbers) you must escape them by putting a backslash, \, in front of them. E.g:
+
+~~~
+cd my\ filename\ with\ spaces
+~~~
+
+Another, usually easier option is to use **tab completion**. We can demo that in class since we'll use it often. All you do is start typing a word, hit tab, and the terminal will try and auto-complete what you've typed. That way you don't have to worry about dealing with the escapes.
+
+A list of special characters in the terminal (specifically a Bash terminal) can be found [here](http://mywiki.wooledge.org/BashGuide/SpecialCharacters)
+
+####Further reading for terminal use
 More commands can be found here if you are interested in learning more. But for now I just want you to have some exposure. 
-http://cli.learncodethehardway.org/book/ex1.html
+[http://cli.learncodethehardway.org/book/ex1.html](http://cli.learncodethehardway.org/book/ex1.html)
 
 
 
