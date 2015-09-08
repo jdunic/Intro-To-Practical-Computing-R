@@ -80,7 +80,7 @@ If you have problems installing these programs prior to class. Please email me a
 If you are successful in setting up your computer and would like to get your feet wet in R, you can also install the package 'Swirl' and try some of the interactive tutorials. 
 
 
-Follow the information at this link to start working with Swirl: http://swirlstats.com/students.html
+Follow the information at this link to start working with Swirl: http://swirlstats.com/students.html  
 
 
 ------------------------------------------------------------------------------------------
@@ -95,7 +95,7 @@ Type 'terminal' into spotlight
 
 Now that you have a terminal open try the following commands  
 
-*Change directory*
+*Change directory to home directory (the ~ means home)*
 
 ~~~
 cd ~  
@@ -103,7 +103,7 @@ cd ~
 
 This should put you in your home directory
 
-*List the files in your directory*
+*List* all *files in your directory*
 
 ~~~
 ls -a
@@ -121,7 +121,7 @@ cd type_directory_name_or_path_here
 pwd
 ~~~
 
-*Go back to the directory one level up*
+*Go back to the directory one level up (no space between the periods)*
 
 ~~~
 cd ..
