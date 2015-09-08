@@ -7,11 +7,11 @@ description: Minimal tutorial on making a simple website with GitHub Pages
 
 ###Table of contents
 
-#### Syllabus
+#### [Syllabus](pages/syllabus.html)
 
-#### [Assignments](pages/assignments.md)
+#### [Assignments](pages/assignments.html)
 
-#### Resources
+#### [Resources](pages/resources.html)
 
 Your first task - Install your
 
