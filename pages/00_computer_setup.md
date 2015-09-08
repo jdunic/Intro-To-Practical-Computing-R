@@ -44,6 +44,21 @@ Debian-based/Ubuntu        | sudo apt-get install git       |
 Fedora                     | sudo yum install git           |
 
 
+#### After the installer
+Once you have followed the install directions (followed the installer dialogue boxes), you will notice that there is no icon or folder that comes up. Not to worry, unless there was some kind of error Git likely installed properly.  
+
+On a Mac, go to Spotlight (the little magnifying glass in the upper right hand corner of your desktop) and type 'terminal'. A box should open, that should look something like this (but yours is likely white - you can change the colour under Terminal > Preferences).
+
+![Screenshot of my terminal](../images/terminal.png "Screenshot of my terminal")
+**Screenshot of my terminal**  
+
+Then type
+
+~~~
+git --version
+~~~
+
+
 #### 4) Create a Github account
 
 Please create an account even if you cannot install git on your local computer.  
