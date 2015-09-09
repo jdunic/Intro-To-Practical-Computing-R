@@ -125,9 +125,9 @@ You have survived your first git cycle! It seems like a lot now, but it becomes 
 
 Exercises:
 
-1) How can you undo a git init?
-2) How can you add multiple files at once?
-3) What is .gitignore?
+1. How can you undo a git init?
+2. How can you add multiple files at once?
+3. What is .gitignore?
 
 Bonus question: What does 'touch' do?
 
