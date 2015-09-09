@@ -4,12 +4,15 @@ title: The Command Line
 description: A very brief introduction - navigating the file system
 ---
 
-First we must start by opening our terminal. Remember, on a Mac, you can go to spotlight and just type terminal. On Windows, I think that you can use the Bash Shell that came packaged with the Git install from yesterday/last night. If you can't find it, don't fret, you can use an emulator in your regular internet browser [bellard.org/jslinux/](bellard.org/jslinux/). 
+#### Why bother?
+Using the terminal is more common than might expect. It’s use underlies a lot of things on your computer. If you ever need to use **cloud computing** resources you will need to use the terminal. **Installing and configuring programs** can require use of the terminal. Particularly *cutting edge tools*. Minimal knowledge of using the terminal can open doors because you are more open to what is possible. Knowing what is possible is what has helped me most.  
 
-
-We will spend a few minutes working on this. If it all goes over your head or you forget the commands, that is okay. What is important is that you have seen this once before because when it comes up, which it very well may, it won’t seem quite as intimidating and it will be easier for you to talk to someone who knows what they are doing. My hope is that you leave here with enough of a memory to Google or ask your way to a solution.
+We will work with git using the terminal this week, to develop our familiarity with the command line.
 
 #### Let's Go!
+
+First we must start by opening our terminal. Remember, on a Mac, you can go to spotlight and just type terminal. On Windows, I think that you can use the Bash Shell that came packaged with the Git install from yesterday/last night. If you can't find it, don't fret, you can use an emulator in your regular internet browser, check it out here: [bellard.org/jslinux/](bellard.org/jslinux/). 
+
 
 To start, let's all make sure we're working in our home directory. Note that the tilde means home. 
 
