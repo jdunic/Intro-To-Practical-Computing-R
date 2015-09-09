@@ -20,7 +20,8 @@ Your first task! Go to Assignments and click on the Software installs page.
 
 **Office Hours:** Tuesday / Thursday 10:00 - 11:00  
 **Office location:** ISC - 3200 (this may move around, so touch base with me before coming)  
-  
+
+**Jillian's Github** [https://github.com/jdunic](https://github.com/jdunic)
 
 
 ###Table of contents
