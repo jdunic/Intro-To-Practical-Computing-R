@@ -3,4 +3,4 @@ layout: page
 title: Syllabus
 ---
 
-Coming soon
+[Introduction to Git](01_introduction_to_git.html)
