@@ -11,7 +11,7 @@ You should also log in to your Github accounts now. We will be using them later 
 
 *It is also a good practice to make a directory that contains all of your R projects in one place. I have a directory called R_projects.
 
-####Rstudio projects
+#### Rstudio projects
 
 Let's start by creating an Rstudio project. A project is basically a special folder that contains all of the work that you do in Rstudio in that project file. It helps your keep your different projects organised. I suggest that you create a project that will contain all of the work that you do in this course. I use projects to keep track of the code for my manuscripts and R packages that I may be working on. 
 
@@ -25,7 +25,7 @@ You'll be prompted with a dialog box
 We just met git the other day. Be sure that you create a local git repository so that we can keep track of our changes! We'll push it to an online repository shortly.
 
 
-####Rmarkdown (html)
+#### Rmarkdown (html)
 
 Before we jump into coding, let's just make our first text file. We're going to start with a special type of file called Rmarkdown. These types of text files are great! They allow us to write text and embed code, the results of that code, and input figures! It is how I have created this walk-through. We'll start with an html document. These are the most flexible and can be converted to a PDF or MS Word document later. 
 
@@ -38,7 +38,7 @@ Now you should have an R Markdown document! You can modify the information at th
 
 Write some stuff Just so you can see it. 
 
-####Tracking our changes -- let's use git!
+#### Tracking our changes -- let's use git!
 
 Instead of using git within Rstudio, let's get more practice using the command line/terminal. 
 
