@@ -1,0 +1,24 @@
+##First steps
+
+```{r, eval = FALSE, echo = FALSE}
+install.packages('gapminder')
+```
+
+```{r}
+library(gapminder)
+library(pander)
+```
+
+Meet your new best friend str()
+```{r}
+str(gapminder)
+
+pandoc.table(head(gapminder), style = 'rmarkdown')
+```
+
+str() tells us what our data looks like. So you can see that our data has a set of columns: country, continent, year, lifeExp, pop, gdpPercap. You'll also notice that there is a type associated with 
+
+I forgot that gapminder is now on CRAN
+```{r, eval = FALSE}
+install.packages('devtools')
+```

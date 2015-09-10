@@ -1,0 +1,26 @@
+*How do you show the 80 character line?*
+Preferences -> Code Editing -> Show margin
+
+*How do you get your text files to wrap/stop at the 80 character mark?*
+Preferences -> Code Editing -> Soft-wrap R source files
+
+
+Commandline questions:
+
+*Why is your terminal black?*
+Check the preferences for your terminal or iTerm. You can change the colour scheme there. Ask google.
+
+
+
+Git questions:
+
+*Why does your terminal have a nice coloured indication of your git information?*
+Checkout this on github to figure out how to set this up for yourself.
+https://github.com/jimeh/git-aware-prompt
+
+
+*Quotes around words... double or single?*
+It doesn't usually matter. Though it is generally best to try and be consistent
+
+*When do I need quotes around words/strings?*
+You'll have to check. Often this comes about as trial and error and you'll notice inconsistencies in the way that people use them. For example, when loading a library(foo) you don't need quotes. But when you use install.packages('foo') you *do* need them. 

@@ -1,0 +1,31 @@
+Half of this class is all about protecting future you from current you.
+
+You're code is going to explode as you explore your data. Life is going to get messy. So we're going to start keeping track of the work that we're doing using something called version control. The specific tool we're going to use is git. It's awesome! And I desperately wish that someone had taught this to me years ago. As long as you are diligent about using it. It helps you keep track of the changes that you make. It can keep track of more than code. And to start with, we are not going to touch R yet. For today, we are only going to be using simple text files. One challenge at a time!
+
+We are going to be using the command line. So I would like all of you to open up a terminal.
+
+For those of you on a Mac, you can just go to spotlight and type terminal.
+
+Windows Users 
+**By keyboard**: 'Press "Win-R," type "cmd" and press "Enter" to open a Command Prompt session using just your keyboard.'
+**By mouse**: 'Click the "Start | Program Files | Accessories | Command Prompt" to open a Command Prompt session using just your mouse.'
+
+(see more detailed instructions from http://smallbusiness.chron.com/open-terminal-session-windows-7-56627.html)
+
+***** Need to figure out what to do about this Windows business...
+
+*Configuring git*
+Adapted from the SoftwareCarpentry git tutorial - http://swcarpentry.github.io/git-novice/index.html
+
+$ git config --global user.name "Tony le Tigre"
+$ git config --global user.email "TonyLeTigre@gmail.com"
+$ git config --global color.ui "auto"
+
+From http://swcarpentry.github.io/git-novice/02-setup.html
+"Git commands are written git verb, where verb is what we actually want it to do. In this case, we’re telling Git:
+
+our name and email address,
+to colorize output,
+that we want to use these settings globally (i.e., for every project),""
+
+

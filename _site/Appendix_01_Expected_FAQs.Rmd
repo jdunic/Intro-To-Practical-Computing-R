@@ -1,0 +1,20 @@
+*How do you show the 80 character line?*
+Preferences -> Code Editing -> Show margin
+
+*How do you get your text files to wrap/stop at the 80 character mark?*
+Preferences -> Code Editing -> Soft-wrap R source files
+
+
+Commandline questions:
+
+*Why is your terminal black?*
+Check the preferences for your terminal or iTerm. You can change the colour scheme there. Ask google.
+
+
+
+Git questions:
+
+*Why does your terminal have a nice coloured indication of your git information?*
+Checkout this on github to figure out how to set this up for yourself.
+https://github.com/jimeh/git-aware-prompt
+
