@@ -20,7 +20,7 @@ File -> New project
 
 You'll be prompted with a dialog box
 
-![New project dialog box. Make sure you create a git repository (it will create a local repo).](../images/Rstudio_images/Rstudio_create_new_project.png)
+![New project dialog box. Make sure you create a git repository (it will create a local repo).](../images/Rstudio_create_new_project.png)
 
 We just met git the other day. Be sure that you create a local git repository so that we can keep track of our changes! We'll push it to an online repository shortly.
 
@@ -59,7 +59,7 @@ What's the first thing we should do when we go to use git?
 A: Check the git status and check what branch we are on. We can do this with 
 > git status
 
-![You should see something like this. Today the branch doesn't matter since we should all have master. We will learn more about this later, but for now I want you to just note where this information is. We can see that we have not staged anything. And in red at the bottom we can see all of the new files that have been created that we have yet to add.](../images/git_images/git_status1.png)
+![You should see something like this. Today the branch doesn't matter since we should all have master. We will learn more about this later, but for now I want you to just note where this information is. We can see that we have not staged anything. And in red at the bottom we can see all of the new files that have been created that we have yet to add.](../images/git_status1.png)
 
 Let's stage some files for a commit. You can play with this if you'd like. You can do git status after everything you do to see what's going on.
 > git add file_name
@@ -68,7 +68,7 @@ or
 *if you would like to add all the changes that you have made
 
 Great where are we now? If we check git status now, what do you see? Is it something like this?
-![The files in green are what you have added and are what will be tracked by git when we commit. The files in red are ones that git is not keeping track of and will not be committed.](../images/git_images/git_add1.png)
+![The files in green are what you have added and are what will be tracked by git when we commit. The files in red are ones that git is not keeping track of and will not be committed.](../images/git_add1.png)
 
 
 Everyone should now have some files staged and ready to be committed. Let's commit and include a message.
@@ -83,7 +83,7 @@ What we have done now is kept track of our changes on our local computer. But le
 
 Now is when we're going to hook up Github with git. Go to your account hit the big green button on our profile page that says 'New'
 
-![In case you forget. This is the button to make a new repository!](../images/git_images/git_create_repo.png)
+![In case you forget. This is the button to make a new repository!](../images/git_create_repo.png)
 
 Great. We've now made another repository. Copy the link to this repository. It should look something like:
 https://github.com/jdunic/Intro-To-Practical-Computing-R
