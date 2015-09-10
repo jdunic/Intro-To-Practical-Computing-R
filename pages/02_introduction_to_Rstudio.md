@@ -11,7 +11,7 @@ You should also log in to your Github accounts now. We will be using them later 
 
 *It is also a good practice to make a directory that contains all of your R projects in one place. I have a directory called R_projects.
 
-*Rstudio projects*
+####Rstudio projects
 
 Let's start by creating an Rstudio project. A project is basically a special folder that contains all of the work that you do in Rstudio in that project file. It helps your keep your different projects organised. I suggest that you create a project that will contain all of the work that you do in this course. I use projects to keep track of the code for my manuscripts and R packages that I may be working on. 
 
@@ -25,7 +25,7 @@ You'll be prompted with a dialog box
 We just met git the other day. Be sure that you create a local git repository so that we can keep track of our changes! We'll push it to an online repository shortly.
 
 
-*Rmarkdown (html)*
+####Rmarkdown (html)
 
 Before we jump into coding, let's just make our first text file. We're going to start with a special type of file called Rmarkdown. These types of text files are great! They allow us to write text and embed code, the results of that code, and input figures! It is how I have created this walk-through. We'll start with an html document. These are the most flexible and can be converted to a PDF or MS Word document later. 
 
@@ -38,7 +38,7 @@ Now you should have an R Markdown document! You can modify the information at th
 
 Write some stuff Just so you can see it. 
 
-*Tracking our changes -- let's use git!*
+####Tracking our changes -- let's use git!
 
 Instead of using git within Rstudio, let's get more practice using the command line/terminal. 
 
@@ -53,27 +53,42 @@ Let's look back at the notes from yesterday's class.
 
 How do we change directories via the terminal?
 A: 
-> cd path
+
+~~~
+cd path
+~~~
 
 What's the first thing we should do when we go to use git?
 A: Check the git status and check what branch we are on. We can do this with 
-> git status
+
+~~~
+git status
+~~~
 
 ![You should see something like this. Today the branch doesn't matter since we should all have master. We will learn more about this later, but for now I want you to just note where this information is. We can see that we have not staged anything. And in red at the bottom we can see all of the new files that have been created that we have yet to add.](../images/git_status1.png)
 
 Let's stage some files for a commit. You can play with this if you'd like. You can do git status after everything you do to see what's going on.
-> git add file_name
-or
-> git add .
+
+~~~
+git add file_name
+
+# or 
+
+git add .
+~~~
+
 *if you would like to add all the changes that you have made
+
 
 Great where are we now? If we check git status now, what do you see? Is it something like this?
 ![The files in green are what you have added and are what will be tracked by git when we commit. The files in red are ones that git is not keeping track of and will not be committed.](../images/git_add1.png)
 
 
 Everyone should now have some files staged and ready to be committed. Let's commit and include a message.
-> git commit -m 'initial commit'
 
+~~~
+git commit -m 'initial commit'
+~~~
 
 Awesome. Any questions? Again, turn to your neighbour if you are having any issues. 
 
@@ -91,19 +106,31 @@ With your username/repo_name
 
 Now we need to go back to our terminal and initiate this online repository.
 Add the URL by doing:
-> git remote add origin https://github.com/jdunic/Intro-To-Practical-Computing-R.git
+
+~~~
+git remote add origin https://github.com/jdunic/Intro-To-Practical-Computing-R.git
+~~~
 
 Note!!! That we have added '.git' to the end of our URL. If you're getting an error make sure you've typed everything in exactly. Then ask your neighbour to take a second look.
 
 You can check that this all worked by doing
-> git remote -v
+
+~~~
+git remote -v
+~~~
 
 You should see something like this
+
+~~~
 # origin  https://github.com/user/repo.git (fetch)
 # origin  https://github.com/user/repo.git (push)
+~~~
 
 Is this all set up for everyone? The final step is to **push** our local changes to the remote repository.
-> git push origin master
+
+~~~
+git push origin master
+~~~
 
 Remember, origin is the name of the remote repository.
 
