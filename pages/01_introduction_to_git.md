@@ -7,7 +7,7 @@ description: Setting up your first repository and making your first commit
 ####Current status
 By now I expect that you have been through the software installs posted [here](pages/00_computer_setup.html)
 
-#### Setting up git*
+#### Setting up git
 Since this is your first time using Git, we will need to configure a few things. This will require us to open up a terminal. For windows users, this will be the Bash shell that was included with yesterday's install.  
 
 It doesn't matter what directory you are in for this because we are telling git to configure global (whole computer) settings.
@@ -31,7 +31,8 @@ git verb
 git do_something
 ~~~
 
-#### Making a repository!
+#### Making a local repository!
+Local means, making something on your computer.
 
 Somewhere on your computer, such as in your home folder, I suggest that you make a new folder called something like R_projects. From now on, this is where you will contain your R projects. It helps to keep things more organised and more simple on your computer.  
 
@@ -83,10 +84,13 @@ git status
 # nothing to commit (create/copy files and use "git add" to track)
 ~~~
 
-Git is telling us that there is nothing to keep track of yet. For now, let's create an empty text file called hello_world.txt. You can do this through the command line as I will do, or you can save a text file into your directory.
+Git is telling us that there is nothing to keep track of yet. 
 
+
+#### Your first commit
+Let's create an empty text file called storytime.txt. You can do this through the command line as I will do, or you can save a text file into your directory.
 ~~~
-touch hello_world.md
+touch storytime.md
 ~~~
 
 Go back and check out git status
@@ -98,7 +102,7 @@ git status
 We can see that there is an 'untracked' file. This means that git is not yet keeping tabs on it. We must *add* this file to the staging area. 
 
 ~~~
-git add hello_world.md
+git add storytime.md
 ~~~
 
 Check out git status again to see your 'staged' file.
@@ -129,11 +133,11 @@ Exercises:
 2. How can you add multiple files at once?
 3. What is .gitignore?
 
-Bonus question: What does 'touch' do?
+Bonus question: What does 'touch' do?  
 
 
 ####Useful reference sheet!
 
 There is a lot of new terminology that is introduced when we talk about version control. For example, 'repository', 'commit', 'merge'. [Software Carpentry](http://software-carpentry.org/) has created an awesome [reference sheet](http://swcarpentry.github.io/git-novice/reference.html) for new users!
 
-A cheatsheet of Git commands that you may find useful as you continue to use Git can be found [here]()
+Here is a [cheatsheet of Git commands]() that you may find useful as you continue to use Git can be found [here]()
