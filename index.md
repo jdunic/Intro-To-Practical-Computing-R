@@ -7,8 +7,11 @@ description: Minimal tutorial on making a simple website with GitHub Pages
 
 ### News
 
-Your first task! Go to Assignments and click on the Software installs page.  
+We will be using the command line to work with git for the rest of the week. If you would like to go through a simple walkthrough of the terminal commands I've posted one [here](pages/brief_cmdline_intro.html) on the Resources page. 
 
+[Git intro walkthrough](pages/01_introduction_to_git.md) is now online if anyone wants to take a sneak peak, or go back over it after class.  
+
+[Git + RStudio + Rmarkdown walkthrough](pages/02_introduction_to_Rstudio.html) is also now online. Feel free to review. 
 
 ### Course Info
 
@@ -31,6 +34,8 @@ Your first task! Go to Assignments and click on the Software installs page.
 #### [Assignments](pages/assignments.html)
 
 #### [Resources](pages/resources.html)
+
+#### [News archive](pages/news_archive.html)
 
 
 
