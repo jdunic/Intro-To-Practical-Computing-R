@@ -9,7 +9,7 @@ I'm assuming that you have installed R and Rstudio by now. If you have had any p
 
 You should also log in to your Github accounts now. We will be using them later in the class.
 
-*It is also a good practice to make a directory that contains all of your R projects in one place. I have a directory called R_projects.
+*It is also a good practice to make a directory that contains all of your R projects in one place. I have a directory called R_projects.  
 
 #### Rstudio projects
 
@@ -22,31 +22,30 @@ You'll be prompted with a dialog box
 
 ![New project dialog box. Make sure you create a git repository (it will create a local repo).](../images/Rstudio_create_new_project.png)
 
-We just met git the other day. Be sure that you create a local git repository so that we can keep track of our changes! We'll push it to an online repository shortly.
+We just met git the other day. Be sure that you create a local git repository so that we can keep track of our changes! We'll push it to an online repository shortly.  
 
 
 #### Rmarkdown (html)
 
-Before we jump into coding, let's just make our first text file. We're going to start with a special type of file called Rmarkdown. These types of text files are great! They allow us to write text and embed code, the results of that code, and input figures! It is how I have created this walk-through. We'll start with an html document. These are the most flexible and can be converted to a PDF or MS Word document later. 
+Before we jump into coding, let's just make our first text file. We're going to start with a special type of file called Rmarkdown. These types of text files are great! They allow us to write text and embed code, the results of that code, and input figures! It is how I have created this walk-through. We'll start with an html document. These are the most flexible and can be converted to a PDF or MS Word document later.   
 
-Let's create our first Rmarkdown file. This is easy in Rstudio!
-File -> New file -> Rmarkdown...
+Let's create our first Rmarkdown file. This is easy in Rstudio!  
+File -> New file -> Rmarkdown...  
 
-Now fill in the title of your document and your name. For now let's select the HTML option. 
+Now fill in the title of your document and your name. For now let's select the HTML option.   
 
-Now you should have an R Markdown document! You can modify the information at the top of the script as you'd like. You can also start one of these from scratch as just a raw text file but Rstudio sets it up nicely for you :)
+Now you should have an R Markdown document! You can modify the information at the top of the script as you'd like. You can also start one of these from scratch as just a raw text file but Rstudio sets it up nicely for you :)  
 
-Write some stuff Just so you can see it. 
+Write some stuff Just so you can see it.   
 
 #### Tracking our changes -- let's use git!
 
-Instead of using git within Rstudio, let's get more practice using the command line/terminal. 
+Instead of using git within Rstudio, let's get more practice using the command line/terminal.   
 
-Let's open terminal (Mac users can just go to spotlight and type in terminal)
+Let's open terminal (Mac users can just go to spotlight and type in terminal)  
 
-**If you are on a Windows machine you can access a terminal (instructions from http://smallbusiness.chron.com/open-terminal-session-windows-7-56627.html)
-**By keyboard**: 'Press "Win-R," type "cmd" and press "Enter" to open a Command Prompt session using just your keyboard.'
-**By mouse**: 'Click the "Start | Program Files | Accessories | Command Prompt" to open a Command Prompt session using just your mouse.'
+**By keyboard**: 'Press "Win-R," type "cmd" and press "Enter" to open a Command Prompt session using just your keyboard.'  
+**By mouse**: 'Click the "Start | Program Files | Accessories | Command Prompt" to open a Command Prompt session using just your mouse.'  
 
 
 Let's look back at the notes from yesterday's class.
