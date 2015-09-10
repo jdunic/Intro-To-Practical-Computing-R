@@ -77,9 +77,11 @@ Everyone should now have some files staged and ready to be committed. Let's comm
 
 Awesome. Any questions? Again, turn to your neighbour if you are having any issues. 
 
+#### Using remote repositories
+
 What we have done now is kept track of our changes on our local computer. But let's now send those changes to a remote repository. Let's all go to our Github pages so that we can create an online repository. 
 
-Just as we did yesterday, we're going to hit the big green button on our profile page that says 'New'
+Now is when we're going to hook up Github with git. Go to your account hit the big green button on our profile page that says 'New'
 
 ![In case you forget. This is the button to make a new repository!](/images/git_images/git_create_repo.png)
 
@@ -107,8 +109,6 @@ Remember, origin is the name of the remote repository.
 
 
 This may still feel tricky and over your head. If it does I recommend that you see me in office hours tomorrow and practise one more time on your own. We can do another practice run through at the end of next class if people would like to. The goals is that we do this enough times throughout the semester, that by the end, this should seem trivial. We'll get there!
-
-
 
 
 
