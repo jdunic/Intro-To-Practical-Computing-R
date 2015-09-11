@@ -10,7 +10,7 @@ By now I expect that you have been through the software installs posted [here](p
 #### Setting up git
 Since this is your first time using Git, we will need to configure a few things. This will require us to open up a terminal. For windows users, this will be the Bash shell that was included with yesterday's install.  
 
-It doesn't matter what directory you are in for this because we are telling git to configure global (whole computer) settings.
+It doesn't matter what directory you are in for this because we are telling git to configure global (whole computer) settings. Note, you're name is probably *not* Minnie Mouse... adjust accordingly. Also, use the email address that you used 
 
 ~~~
 git config --global user.name "Minnie Mouse"
@@ -150,4 +150,4 @@ Bonus question: What does 'touch' do?
 
 There is a lot of new terminology that is introduced when we talk about version control. For example, 'repository', 'commit', 'merge'. [Software Carpentry](http://software-carpentry.org/) has created an awesome [reference sheet](http://swcarpentry.github.io/git-novice/reference.html) for new users!
 
-Here is a [cheatsheet of Git commands]() that you may find useful as you continue to use Git can be found [here]()
+Here is a [cheatsheet of Git commands](http://www.git-tower.com/blog/git-cheat-sheet/) that you may find useful as you continue to use Git.
