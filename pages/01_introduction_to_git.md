@@ -98,6 +98,7 @@ Git is telling us that there is nothing to keep track of yet.
 
 #### Your first commit
 Let's create an empty text file called storytime.txt. You can do this through the command line as I will do, or you can save a text file into your directory.
+
 ~~~
 touch storytime.md
 ~~~
