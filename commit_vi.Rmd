@@ -25,15 +25,17 @@ Oh, hello. There's a REASON for text editors for commits. You can write longer m
   vi is actually **incredibly** powerful. If you're interested in it, read up. 31337 h4X0r5 love it. Unless they are emacs fiends. But that is neither here nor there.
   
   You, however, might want to do something simple - just add text, save it, and commit.  This is actually quite straightforward.
-  
->  First - type "i" to "insert" text.
 
->  Second - type. You can enter text freely.
+```
+First - type "i" to "insert" text.
 
->  Third - hit "escape" to get back to where you can enter commands.
+Second - type. You can enter text freely.
 
->  Fourth, type ":wq"  This stands for write-quit.
-  
+Third - hit "escape" to get back to where you can enter commands.
+
+Fourth, type ":wq"  This stands for write-quit.
+``` 
+
 BOOM!  Done.
 
 **B) Change to another text editor.** There are other text editors out there that are easier to use. My personal favorite is [nano](http://www.nano-editor.org/). It's installed by default on OSX. You'll have to go to the previous link to get it for windows. What's great is that there's always a menu there at the bottom of the screen when you run nano that tells you the keystrokes to save some output and quit nano.
