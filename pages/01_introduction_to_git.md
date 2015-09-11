@@ -18,6 +18,15 @@ git config --global user.email "Minnie.Mouse001@umb.edu"
 git config --global color.ui "auto"
 ~~~
 
+Let's also choose a default text editor for git. For some actions, such as merging branches, git will open a text file that let's you state the reason for the merge. To set the program that this text file will open in, let's set our default text editor. Choose the text editor that you use on your computer. (For the most part Macs will be TextEdit, while Windows users will use Notepad++)
+
+{:.table}
+Editor                     | command                        |
+-------------------------- | ------------------------------ |
+TextEdit             | $ git config --global core.editor "TextEdit -w"   |
+Notepad++            | git config --global core.editor "'c:/program files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"          |
+
+
 You can check your settings using
 
 ~~~
