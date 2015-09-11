@@ -5,13 +5,18 @@ tagline: An introductory class
 description: Minimal tutorial on making a simple website with GitHub Pages
 ---
 
-### News
+### News - September 11, 2015
+**Reminder** - regular class times begin: Tuesday / Thursday 9:00 - 10:00  
 
-We will be using the command line to work with git for the rest of the week. If you would like to go through a simple walkthrough of the terminal commands I've posted one [here](pages/brief_cmdline_intro.html) on the Resources page. 
+Updates from Friday's class coming by Sunday night. The walkthroughs that are online now need to have some corrections and clarifications made.  
 
-[Git intro walkthrough](pages/01_introduction_to_git.html) is now online if anyone wants to take a sneak peak, or go back over it after class.  
+I will be:
+    * posting the first homework (aiming by tonight/tomorrow)
+    * updating the [git intro walkthrough](pages/01_introduction_to_git.html)
+    * updating the [git + Rstudio + Rmarkdown walkthrough](pages/02_introduction_to_Rstudio.html)
+    * posting what you need to do to prepare for Tuesday's class
 
-[Git + RStudio + Rmarkdown walkthrough](pages/02_introduction_to_Rstudio.html) is also now online. Feel free to review. 
+------------------------------------------------------------------------------
 
 ### Course Info
 
@@ -26,6 +31,7 @@ We will be using the command line to work with git for the rest of the week. If 
 
 **Jillian's Github** [https://github.com/jdunic](https://github.com/jdunic)
 
+------------------------------------------------------------------------------
 
 ###Table of contents
 
