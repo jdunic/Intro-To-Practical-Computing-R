@@ -23,8 +23,8 @@ Let's also choose a default text editor for git. For some actions, such as mergi
 {:.table}
 Editor                     | command                        |
 -------------------------- | ------------------------------ |
-TextEdit             | $ git config --global core.editor "TextEdit -w"   |
-Notepad++            | git config --global core.editor "'c:/program files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"          |
+TextEdit             | ```$ git config --global core.editor "TextEdit -w"```   |
+Notepad++            | ```git config --global core.editor "'c:/program files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"```          |
 
 
 You can check your settings using
