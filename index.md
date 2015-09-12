@@ -12,10 +12,10 @@ Updates from Friday's class coming by Sunday night. The walkthroughs that are on
 
 I will be:
 
-    * posting the first homework (aiming by tonight/tomorrow)
-    * updating the [git intro walkthrough](pages/01_introduction_to_git.html)
-    * updating the [git + Rstudio + Rmarkdown walkthrough](pages/02_introduction_to_Rstudio.html)
-    * posting what you need to do to prepare for Tuesday's class
+* posting the first homework (aiming by tonight/tomorrow)
+* updating the [git intro walkthrough](pages/01_introduction_to_git.html)
+* updating the [git + Rstudio + Rmarkdown walkthrough](pages/02_introduction_to_Rstudio.html)
+* posting what you need to do to prepare for Tuesday's class
 
 ------------------------------------------------------------------------------
 
