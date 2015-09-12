@@ -11,6 +11,7 @@ description: Minimal tutorial on making a simple website with GitHub Pages
 Updates from Friday's class coming by Sunday night. The walkthroughs that are online now need to have some corrections and clarifications made.  
 
 I will be:
+
     * posting the first homework (aiming by tonight/tomorrow)
     * updating the [git intro walkthrough](pages/01_introduction_to_git.html)
     * updating the [git + Rstudio + Rmarkdown walkthrough](pages/02_introduction_to_Rstudio.html)
