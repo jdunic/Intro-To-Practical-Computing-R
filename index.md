@@ -6,16 +6,16 @@ description: Minimal tutorial on making a simple website with GitHub Pages
 ---
 
 ### News - September 11, 2015
+
 **Reminder** - regular class times begin: Tuesday / Thursday 9:00 - 10:00  
 
-Updates from Friday's class coming by Sunday night. The walkthroughs that are online now need to have some corrections and clarifications made.  
+**Homework**
+[Homework 01](pages/homework_01.html) is now up! It will be due on Wednesday by midnight so that you have time to ask me questions on Tuesday.  
 
-I will be:
+Check [here](pages/homework_submission.html) for instructions on how to submit your homework (No more emailing! Everything will be done via Github!)  
 
-* posting the first homework (aiming by tonight/tomorrow)
-* updating the [git intro walkthrough](pages/01_introduction_to_git.html)
-* updating the [git + Rstudio + Rmarkdown walkthrough](pages/02_introduction_to_Rstudio.html)
-* posting what you need to do to prepare for Tuesday's class
+Updates to [git intro walkthrough](pages/01_introduction_to_git.html) and [git + Rstudio + Rmarkdown walkthrough](pages/02_introduction_to_Rstudio.html) are still on their way. Check back soon.  
+
 
 ------------------------------------------------------------------------------
 
