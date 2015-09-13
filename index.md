@@ -9,13 +9,20 @@ description: Minimal tutorial on making a simple website with GitHub Pages
 
 **Reminder** - regular class times begin: Tuesday / Thursday 9:00 - 10:00  
 
-**Homework**
+**Homework:**  
 [Homework 01](pages/homework_01.html) is now up! It will be due on Wednesday by midnight so that you have time to ask me questions on Tuesday.  
 
 Check [here](pages/homework_submission.html) for instructions on how to submit your homework (No more emailing! Everything will be done via Github!)  
 
 Updates to [git intro walkthrough](pages/01_introduction_to_git.html) and [git + Rstudio + Rmarkdown walkthrough](pages/02_introduction_to_Rstudio.html) are still on their way. Check back soon.  
 
+
+**Tuesday's plan**
+On Tuesday we will touch base on how everyone is feeling with Git, so bring questions (or post them on issues page first so that we can solve problems before class). Then we will get started with R!
+
+To prepare for this, check out the first and second lessons ('Basic Building Blocks' and 'Workspace and Files') in swirl. If some of it is blind following, that's okay! Bring any questions you have to class!
+
+[http://swirlstats.com/students.html](http://swirlstats.com/students.html)
 
 ------------------------------------------------------------------------------
 
