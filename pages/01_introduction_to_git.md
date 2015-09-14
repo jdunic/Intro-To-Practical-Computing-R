@@ -5,7 +5,7 @@ description: Setting up your first repository and making your first commit
 ---
 
 ####Current status
-By now I expect that you have been through the software installs posted [here](pages/00_computer_setup.html)
+By now I expect that you have been through the software installs posted [here](00_computer_setup.html)
 
 #### Setting up git
 Since this is your first time using Git, we will need to configure a few things. This will require us to open up a terminal. For windows users, this will be the Bash shell that was included with yesterday's install.  
