@@ -5,11 +5,13 @@ description: Make your first Rstudio project
 ---
 
 
-I'm assuming that you have installed R and Rstudio by now. If you have had any problems, please start an issue on the Github page or, if we haven't gotten there yet, send me an email.
-
-You should also log in to your Github accounts now. We will be using them later in the class.
+I'm assuming that you have installed R and Rstudio by now. If you have had any problems, please start an issue on the Github page or, if we haven't gotten there yet, send me an email. You should also log in to your Github accounts now. We will be using them later in the class. Don't forget to request your educational discount on your Github account!  
 
 *It is also a good practice to make a directory that contains all of your R projects in one place. I have a directory called R_projects.  
+
+
+Following this walkthrough, we're going to tell RStudio to initiate a git repository that will be for our homework. Then we will integrate our git workflow with RStudio. 
+
 
 #### Rstudio projects
 
@@ -22,7 +24,9 @@ You'll be prompted with a dialog box
 
 ![New project dialog box. Make sure you create a git repository (it will create a local repo).](../images/Rstudio_create_new_project.png)
 
-We just met git the other day. Be sure that you create a local git repository so that we can keep track of our changes! We'll push it to an online repository shortly.  
+Add a new directory called homework, or something along those lines. Note, this does not need to match up with what you will call your repository on Github. Something short and sweet works just fine. As I mentioned before, I would recommend that you add this new homework directory to your R\_projects folder, or in another folder like R\_projects/Biol_653. 
+
+If this dialogue box shows up, but does not give you the option to create a git repository, let me know. Create a git repository, this means that RStudio will take care of the `git init` command that we used in the intro to git walkthrough. This will create a local repository, telling git that we want to track changes in our selected directory.
 
 
 #### Rmarkdown (html)
@@ -70,9 +74,11 @@ Let's stage some files for a commit. You can play with this if you'd like. You c
 
 ~~~
 git add file_name
+~~~
 
-# or 
+or 
 
+~~~
 git add .
 ~~~
 
@@ -99,12 +105,12 @@ Now is when we're going to hook up Github with git. Go to your account hit the b
 
 ![In case you forget. This is the button to make a new repository!](../images/git_create_repo.png)
 
-Great. We've now made another repository. Copy the link to this repository. It should look something like:
-https://github.com/jdunic/Intro-To-Practical-Computing-R
+Great. We've now made another repository. If this is your homework directory, name it: BIOL-653-lastname-firstname. Now copy the link to this repository. It should look something like:  
+https://github.com/jdunic/Intro-To-Practical-Computing-R  
 With your username/repo_name
 
 Now we need to go back to our terminal and initiate this online repository.
-Add the URL by doing:
+Add the URL by doing something like (note, you're not jdunic!):
 
 ~~~
 git remote add origin https://github.com/jdunic/Intro-To-Practical-Computing-R.git
@@ -118,24 +124,35 @@ You can check that this all worked by doing
 git remote -v
 ~~~
 
-You should see something like this
+You should see something like this.  
 
 ~~~
 # origin  https://github.com/user/repo.git (fetch)
 # origin  https://github.com/user/repo.git (push)
 ~~~
 
-Is this all set up for everyone? The final step is to **push** our local changes to the remote repository.
+What is this 'origin' business? Origin is a convention that we use to name our remote repository. So when you see 'origin', this is really saying, the remote repository found at some URL.  
+
+Is this all set up for everyone?  
+
+Now we are going to prepare to *push* our local changes to our remote repository. But first, it's a good habit to *pull* any existing changes from the remote (online) repository. 
+
+~~~
+git pull origin master
+~~~
+
+If we translate this into English, this says, git, pull any changes on the remote master branch to my local computer. For the next couple weeks, we will only be working with the master branch. Remember that I've talked about how you can fork and create different versions of things? We give these names, and by convention the main branch is called 'master'. Typically you want your master branch to consist of working code.  
+
+Now that we've *pulled* any changes that might have been on our remote repository. We can go ahead and *push* our local changes to the remote repository. 
 
 ~~~
 git push origin master
 ~~~
 
-Remember, origin is the name of the remote repository.
+The translation of this is, git, push our local changes on the master branch, to the origin (remote repository).  
 
 
 This may still feel tricky and over your head. If it does I recommend that you see me in office hours tomorrow and practise one more time on your own. We can do another practice run through at the end of next class if people would like to. The goals is that we do this enough times throughout the semester, that by the end, this should seem trivial. We'll get there!
-
 
 
 References:
