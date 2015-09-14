@@ -143,6 +143,9 @@ git pull origin master
 
 If we translate this into English, this says, git, pull any changes on the remote master branch to my local computer. For the next couple weeks, we will only be working with the master branch. Remember that I've talked about how you can fork and create different versions of things? We give these names, and by convention the main branch is called 'master'. Typically you want your master branch to consist of working code.  
 
+After you did this, did you get to an odd looking screen that asks about writing a merge commit? You may have entered into a text editor that runs within the terminal. Because it works within the terminal, you can't navigate around the text using the mouse. Instead you use the arrow keys (and other shortcuts). Read more [here](commit_vi.html) and learn how to escape this.
+
+
 Now that we've *pulled* any changes that might have been on our remote repository. We can go ahead and *push* our local changes to the remote repository. 
 
 ~~~
