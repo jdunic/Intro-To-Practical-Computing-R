@@ -37,6 +37,14 @@ Windows         | https://git-for-windows.github.io/           |
 *Possible error message*
 If you're on a Mac and you the the error: "App can't be opened because it is from an unidentified developer", right-click the application and choose 'Open'. Then click the 'Open' button at the next dialogue warning.  
 
+On Mac/Linux, you'll notice that after the install there is no icon that appears. Git itself is invisible, access through the terminal or GUIs (graphical user interfaces) such as SourceTree and the Github app. To see evidence of the install, after you have run through the installer, enter the following command in the terminal.
+
+~~~
+git --version
+~~~
+
+
+
 ##### **Linux**
 You will most likely use your standard package-manager 
 
@@ -65,13 +73,12 @@ git --version
 #### 4) Create a Github account
 
 Please create an account even if you cannot install git on your local computer.  
-https://github.com/  
+[https://github.com/](https://github.com/)  
 
 
 #### 5) Free stuff!
 On Github Request an education discount! They have created a student developer pack with free access to various tools that are worth checking out! I recommend requesting your educational discount now, as these take time to process. 
-https://education.github.com/discount_requests/new  
-
+[https://education.github.com/discount_requests/new](https://education.github.com/discount_requests/new)
 
 
 #### Troubleshooting
