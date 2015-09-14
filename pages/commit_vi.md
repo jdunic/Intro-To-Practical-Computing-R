@@ -1,11 +1,11 @@
 ---
+layout: page
 title: "If you end up in vi by not typing git commit -m"
-output: html_document
 ---
 
 Sometimes when making a commit with git, you forget the -m and get dumped into a wild wonderland, known as vi.  It looks something like this:
 
-![](./images/vigit.jpg) 
+![](../images/vigit.jpg) 
 
 Oh no! What happened! What do I do!  You may flail, type "q", escape, and other things, and yet, to no avail.
 
@@ -26,7 +26,7 @@ Oh, hello. There's a REASON for text editors for commits. You can write longer m
   
   You, however, might want to do something simple - just add text, save it, and commit.  This is actually quite straightforward.
 
-```
+~~~
 First - type "i" to "insert" text.
 
 Second - type. You can enter text freely.
@@ -34,7 +34,7 @@ Second - type. You can enter text freely.
 Third - hit "escape" to get back to where you can enter commands.
 
 Fourth, type ":wq"  This stands for write-quit.
-``` 
+~~~
 
 BOOM!  Done.
 
@@ -42,6 +42,8 @@ BOOM!  Done.
 
 Once you've installed nano, in your shell the following command will set it as your editor:
 
-> git config --global core.editor "nano"
+~~~
+git config --global core.editor "nano"
+~~~
 
 That's it!  Now you can commit without the "-m", write longer commit messages, and then save them and quit your text editor with ease!

@@ -3,4 +3,4 @@ layout: page
 title: Resources
 ---
 
-Resources coming soon.
+[Escape vi (in the terminal)](commit_vi.html)
