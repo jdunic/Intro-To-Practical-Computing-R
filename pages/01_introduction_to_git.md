@@ -43,7 +43,7 @@ git do_something
 #### Making a local repository!
 Local means, making something on your computer.
 
-Somewhere on your computer, such as in your home folder, I suggest that you make a new folder called something like R_projects. From now on, this is where you will contain your R projects. It helps to keep things more organised and more simple on your computer.  
+Somewhere on your computer, such as in your home folder, I suggest that you make a new folder called something like R_projects (note that I avoided spaces because spaces in filenames can cause difficulties). From now on, this is where you will contain your R projects. It helps to keep things more organised and more simple on your computer.  
 
 In your new directory, let's make another one called anything you like. This will be a folder for all the in-class exercises and such. For tomorrow you can make a repository for your homework. 
 
@@ -62,6 +62,7 @@ ls
 ~~~
 
 ##### Initiate our repository!
+We can initiate a git repository by running `git init` in a terminal when we are in the folder that we will be tracking changes in (e.g., class_exercises).
 ~~~
 git init
 ~~~
@@ -97,7 +98,7 @@ Git is telling us that there is nothing to keep track of yet.
 
 
 #### Your first commit
-Let's create an empty text file called storytime.txt. You can do this through the command line as I will do, or you can save a text file into your directory.
+Let's create an empty text file called storytime.md. You can do this through the command line as I will do, or you can save a text file using an editor like RStudio, TextEdit, or NotePad, in your directory.
 
 ~~~
 touch storytime.md
@@ -134,10 +135,17 @@ We can view our commit history by looking at the git log
 git log
 ~~~
 
-You have survived your first git cycle! It seems like a lot now, but it becomes second nature surprisingly quickly. 
+You have survived your first git cycle! It seems like a lot now, but it becomes second nature surprisingly quickly.  
+
+Software Carpentry has a great figure showing you the git commit workflow. On the left, you can see the files that you have made changes to. You must then tell git that you are interested in tracking those changes. You start this by 'adding' a file to a staging area using `git add`. Then you must make a commit. This is the step where the change is officially added to your repository and the change is tracked. 
+
+![Git staging area](../images/git-staging-area.svg "git staging area")
+**Git staging area**  
+
+This is all happening locally--on your computer. The next step would be to 'push' these changes to your Github account. You'll learn more about this in the next walkthrough. 
 
 
-Exercises:
+Checkout the web to see if you can figure out the answers to these questions:
 
 1. How can you undo a git init?
 2. How can you add multiple files at once?
