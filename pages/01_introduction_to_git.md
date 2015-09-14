@@ -63,6 +63,7 @@ ls
 
 ##### Initiate our repository!
 We can initiate a git repository by running `git init` in a terminal when we are in the folder that we will be tracking changes in (e.g., class_exercises).
+
 ~~~
 git init
 ~~~
@@ -139,7 +140,7 @@ You have survived your first git cycle! It seems like a lot now, but it becomes 
 
 Software Carpentry has a great figure showing you the git commit workflow. On the left, you can see the files that you have made changes to. You must then tell git that you are interested in tracking those changes. You start this by 'adding' a file to a staging area using `git add`. Then you must make a commit. This is the step where the change is officially added to your repository and the change is tracked. 
 
-![Git staging area](../images/git-staging-area.svg "git staging area")
+![Git staging area](../images/git-staging-area.svg "git staging area")  
 **Git staging area**  
 
 This is all happening locally--on your computer. The next step would be to 'push' these changes to your Github account. You'll learn more about this in the next walkthrough. 
