@@ -1,3 +1,5 @@
 adding a line to demonstrate diffing and add/committing
 
-testing an emdash --- test.
+testing emdash --- test
+
+test git config --global core.editor "open -W -n", must commit first
