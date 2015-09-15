@@ -14,15 +14,38 @@ description: Minimal tutorial on making a simple website with GitHub Pages
 
 Check [here](pages/homework_submission.html) for instructions on how to submit your homework (No more emailing! Everything will be done via Github!)  
 
-[Introduction to git walkthrough](pages/01_introduction_to_git.html) and [Git + Rstudio + Rmarkdown walkthrough](pages/02_introduction_to_Rstudio.html) pages have been updated. Go through them again if you want more practice. They will also help you with the homework. If you notice anything that needs further clarification (e.g., addition of more screenshots, errors that come up, etc., please post an [issue](https://github.com/jdunic/Intro-To-Practical-Computing-R/issues) so that I can fix them!)
+[Introduction to git walkthrough](pages/01_introduction_to_git.html) and [Git + Rstudio + Rmarkdown walkthrough](pages/02_introduction_to_Rstudio.html) pages have been updated. Go through them again if you want more practice. They will also help you with the homework. If you notice anything that needs further clarification (e.g., addition of more screenshots, errors that come up, etc., please post an [issue](https://github.com/jdunic/Intro-To-Practical-Computing-R/issues) so that I can fix them!)  
 
+--------------------------------------------------------------------------------
 
-**Tuesday's plan**  
-On Tuesday we will touch base on how everyone is feeling with Git, so bring questions (or post them on issues page first so that we can solve problems before class). Then we will get started with R!  
+### Readings for Thursday, Sept 17
 
-To prepare for this, check out the first and second lessons ('Basic Building Blocks' and 'Workspace and Files') in swirl. If some of it is blind following, that's okay! Bring any questions you have to class!
+Coding style matters, it makes your code more readable--a benefit to both future 
+you and your colleagues. Read through both of these style guides. They are very 
+similar, but you can choose to use the conventions of either. Just make sure you 
+work on consistency.  
 
-[http://swirlstats.com/students.html](http://swirlstats.com/students.html)
+* Hadley Wickham's style guide - 
+  [http://adv-r.had.co.nz/Style.html](http://adv-r.had.co.nz/Style.html)
+* Google's R style guide - 
+  [http://google-styleguide.googlecode.com/svn/trunk/Rguide.xml](http://google-styleguide.googlecode.com/svn/trunk/Rguide.xml)  
+
+Skim over this. It is definitely worth the read. Skim it now, but come back to 
+it throughout the semester because you will learn more and more each time you 
+look at it. This page is just one section, there are three others: Atomic 
+vectors, Factors, and Data frames. Feel free to skim over these sections for 
+'gotchas' that you *will* come across. We will however, read these as we cover 
+these topics in class.  
+
+* aRrgh: a newcomer’s (angry) guide to R - 
+  [Basic syntax](http://arrgh.tim-smith.us/syntax.html)  
+
+Last, read this git cheatsheet. The first page is a good reference for commands, 
+while the second page covers best practices that we touched on in class. Again, 
+remind yourself of these periodically! 
+
+* Git cheatsheet and best practices - 
+  [http://www.git-tower.com/blog/git-cheat-sheet/](http://www.git-tower.com/blog/git-cheat-sheet/)
 
 ------------------------------------------------------------------------------
 
