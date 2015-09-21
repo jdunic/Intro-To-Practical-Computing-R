@@ -5,6 +5,15 @@ description: A list of old news postings
 ---
 
 
+
+**News - September 11, 2015**
+On Tuesday we will touch base on how everyone is feeling with Git, so bring questions (or post them on issues page first so that we can solve problems before class). Then we will get started with R!  
+
+To prepare for this, check out the first and second lessons ('Basic Building Blocks' and 'Workspace and Files') in swirl. If some of it is blind following, that's okay! Bring any questions you have to class!
+
+[http://swirlstats.com/students.html](http://swirlstats.com/students.html)
+
+
 **September 11, 2015**
 *Reminder* - regular class times begin: Tuesday / Thursday 9:00 - 10:00  
 
