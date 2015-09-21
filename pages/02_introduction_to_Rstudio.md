@@ -54,7 +54,7 @@ Let's open terminal (Mac users can just go to spotlight and type in terminal)
 
 Let's look back at the notes from yesterday's class.
 
-How do we change directories via the terminal?
+How do we change directories via the terminal?  
 A: 
 
 ~~~
@@ -138,7 +138,7 @@ Is this all set up for everyone?
 Now we are going to prepare to *push* our local changes to our remote repository. But first, it's a good habit to *pull* any existing changes from the remote (online) repository. 
 
 ~~~
-git pull origin master
+git pull -u origin master
 ~~~
 
 If we translate this into English, this says, git, pull any changes on the remote master branch to my local computer. For the next couple weeks, we will only be working with the master branch. Remember that I've talked about how you can fork and create different versions of things? We give these names, and by convention the main branch is called 'master'. Typically you want your master branch to consist of working code.  
