@@ -17,7 +17,7 @@ guides! I will be looking for consistent and easy to read code on your homework!
   [http://google-styleguide.googlecode.com/svn/trunk/Rguide.xml](http://google-styleguide.googlecode.com/svn/trunk/Rguide.xml)  
 
 **Exercises:** An initial set of exercises that have you practice subsetting 
-vectors can be found [here](pages/exercises_01_subsetting.html). More exercises 
+vectors can be found [**here**](pages/exercises_01_subsetting.html). More exercises 
 will be posted in the exercise section below.  
 
 Walkthroughs from last week are still in progress. I have posted what is done up 
