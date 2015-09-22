@@ -18,7 +18,10 @@ guides! I will be looking for consistent and easy to read code on your homework!
 
 **Exercises:** An initial set of exercises that have you practice subsetting 
 vectors can be found [here](pages/exercises_01_subsetting.html). More exercises 
-will be posted in the [exercise](#### [Exercises]) section below.  
+will be posted in the exercise section below.  
+
+Walkthroughs from last week are still in progress. I have posted what is done up 
+to now, but I will continue to clean them up through the week. 
 
 #### Missed some news? Checkout the [News archive](pages/news_archive.html)
 --------------------------------------------------------------------------------
