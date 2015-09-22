@@ -1,7 +1,7 @@
 ---
 layout: page
-title: 
-description: 
+title: Introduction to R 
+description: Basics of R - R syntax - Helping yourself
 ---
 
 Sept 15

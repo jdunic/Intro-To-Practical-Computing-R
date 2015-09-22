@@ -1,3 +1,9 @@
+---
+layout: page
+title: Readings
+description: Weekly and supplementary readings
+---
+
 ### Readings for Thursday, Sept 17
 
 Coding style matters, it makes your code more readable--a benefit to both future 
