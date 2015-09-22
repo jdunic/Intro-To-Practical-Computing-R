@@ -1,3 +1,10 @@
+---
+layout: page
+title: Exercise 1
+description: Subsetting vectors and data.frames
+---
+
+
 Here are some follow-up exercises for subsetting vectors and data.frames that 
 you may wish to try.
 
