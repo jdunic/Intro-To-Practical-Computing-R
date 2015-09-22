@@ -86,13 +86,27 @@ Comparisons
 ~~~
 
 
-#### Floating point numbers
-We can see that we can check equivalence using the `==` operator. However, you should be aware of an interesting behaviour. 
+
 
 ~~~
 0.0003
 3 * 10^(-4)
 3e-4
+~~~
+
+#### Floating point numbers
+We can see that we can check equivalence using the `==` operator. However, you should be aware of an interesting behaviour. I'll expand the explanation soon and for those who want to know more, check it out on google. But essentially storing decimal values with perfect precision can cause difficulties on a computer. This can make doing comparisons tricky, where numbers that look and really are equal, do not satisfy the equivalence `==`. To really test whether values are equal (this does come up sometimes), you are best off to use the `all.equal()` function in cases where you suspect you may run across floating point issues.
+
+Try this out
+
+~~~
+0.0003 == 3 * 10^(4)
+~~~
+
+Now try this
+
+~~~
+all.equal(0.0003, 3 * 10^(-4))
 ~~~
 
 
