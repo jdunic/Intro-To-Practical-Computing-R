@@ -27,11 +27,12 @@ The take homes from lecture:
 
 
 ### Some basics of R and R syntax
-This is a follow-up to the work you have done using the Swirl lessons 1 and 2. We will beging to familiarise ourselves we will learn about basic R syntax, some R functionality, and learn how to interpret the output of str(). 
+This is a follow-up to the work you have done using the Swirl lessons 1 and 2. We will beging to familiarise ourselves we will learn about basic R syntax, some R functionality, and learn how to interpret the output of str().  
 
 #### Basic mathematical operations *modified from swc
 
 You can use R just like a calculator. 
+
 ~~~
 2 + 2
 ~~~
@@ -42,7 +43,9 @@ Order of operations are followed.
 (3 + 4 * (10 - 5)^2)
 ~~~
 
-Scientific notation can and is used in R. These three values are equivalent. 
+**Scientific notation**  
+
+Scientific notation can and is used in R. These three values are equivalent.  
 
 ~~~
 0.0003
@@ -50,7 +53,9 @@ Scientific notation can and is used in R. These three values are equivalent.
 3e-4
 ~~~
 
-R includes mathematical functions. Note in the examples below that `log()` is the natural logarithm in R, if you would like to use a logarithm with a different base, such as base 10, you need to include that explicitly, as demonstrated. 
+**Functions**  
+
+R includes mathematical functions. Note in the examples below that `log()` is the natural logarithm in R, if you would like to use a logarithm with a different base, such as base 10, you need to include that explicitly, as demonstrated.  
 
 ~~~
 log(2)  # natural log
@@ -60,7 +65,7 @@ exp(0.5)  # e^(1/2)
 
 ~~~
 
-Comparisons  
+**Comparisons**  
 
 ~~~
 2 == 2
@@ -83,15 +88,6 @@ Comparisons
 ~~~
 2 <= 2
 2 <= 3
-~~~
-
-
-
-
-~~~
-0.0003
-3 * 10^(-4)
-3e-4
 ~~~
 
 #### Floating point numbers
