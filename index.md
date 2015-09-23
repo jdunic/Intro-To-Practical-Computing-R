@@ -20,6 +20,10 @@ guides! I will be looking for consistent and easy to read code on your homework!
 vectors can be found [**here**](pages/exercises_01_subsetting.html). More exercises 
 will be posted in the exercise section below.  
 
+**Homework:** A draft of [homework 2](pages/homework/homework_02.html) is now 
+posted. It may seem a bit long so I may limit how much of it needs to be done. 
+For now, this is a good chance to start practising your plot making. 
+
 Walkthroughs from last week are still in progress. I have posted what is done up 
 to now, but I will continue to clean them up through the week. 
 
@@ -34,7 +38,6 @@ to now, but I will continue to clean them up through the week.
 [*The split-apply-combine strategy for data analysis*](http://www.jstatsoft.org/v40/i01/paper). Although it refers to a package plyr that has been superceded by Hadley's 
 dplyr package, the fundamental approach and description of data analysis remains 
 the same.
-
 
 
 ------------------------------------------------------------------------------
