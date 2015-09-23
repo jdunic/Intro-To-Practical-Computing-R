@@ -139,7 +139,7 @@ img {
 <div id="the-actual-homework-part" class="section level4">
 <h4>The actual homework part:</h4>
 <p>First, get yourself setup by running the following code. (You may copy and paste this so that you don’t introduce any extra mistakes to fix! But depending on what you have set as your working directory, you may need to adjust the path to where your hw_gapminder.csv file is).</p>
-<p>Download this modified <a href="pages/homework/hw_gapminder.csv">gapminder dataset</a>.</p>
+<p>Download this modified <a href="hw_gapminder.csv">gapminder dataset</a>.</p>
 <pre class="r"><code>library(ggplot2)
 
 hw_gapminder &lt;- read.csv('./hw_gapminder.csv')</code></pre>
@@ -150,6 +150,7 @@ small_set &lt;- hw_gapminder[c(1, 2, 3, 4, 1300:1304), ('country', 'continent', 
 mean_gdp &lt;- mean(hw_gapminder$gdpPercap)
 
 max_country &lt;- hw_gapminder$country[which(hw_gapminder$lifeExp = max(hw_gapminder$lifeExp))]</code></pre>
+<hr />
 <p>The desired outcomes are:</p>
 <pre class="r"><code>mean_lifeExp</code></pre>
 <pre><code>## [1] 59.47444</code></pre>
