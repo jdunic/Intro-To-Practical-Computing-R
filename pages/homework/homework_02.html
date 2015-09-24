@@ -73,6 +73,7 @@ img {
 <li>for a check-plus, we’re looking for you to push yourself</li>
 <li>e.g., try a new technique, provide a high quality walkthrough, make the plots even better</li>
 </ul>
+<hr />
 <div id="part-i---make-these-plots" class="section level3">
 <h3>Part I - Make these plots!</h3>
 <p>Here is a chance to test out the skills you worked on in class. A few things to keep in mind as you work your way through making these plots:</p>
@@ -142,7 +143,16 @@ img {
 <p>Download this modified <a href="./hw_gapminder.csv">gapminder dataset</a>.</p>
 <pre class="r"><code>library(ggplot2)
 
-hw_gapminder &lt;- read.csv('./hw_gapminder.csv')</code></pre>
+hw_gapminder &lt;- read.csv('./hw_gapminder.csv')
+
+str(hw_gapminder)</code></pre>
+<pre><code>## 'data.frame':    1704 obs. of  6 variables:
+##  $ country  : Factor w/ 142 levels &quot;Afghanistan&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ continent: Factor w/ 5 levels &quot;Africa&quot;,&quot;Americas&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+##  $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
+##  $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...
+##  $ gdpPercap: num  779 821 853 836 740 ...</code></pre>
 <pre class="r"><code>mean_lifeExp &lt;- mean(hw_gapminder$lifeExpe)
 
 small_set &lt;- hw_gapminder[c(1, 2, 3, 4, 1300:1304), ('country', 'continent', 'year')]
