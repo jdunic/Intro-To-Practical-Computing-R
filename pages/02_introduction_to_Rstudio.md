@@ -135,10 +135,18 @@ What is this 'origin' business? Origin is a convention that we use to name our r
 
 Is this all set up for everyone?  
 
-Now we are going to prepare to *push* our local changes to our remote repository. But first, it's a good habit to *pull* any existing changes from the remote (online) repository. 
+Now we are going to prepare to *push* our local changes to our remote repository. But first, it's a good habit to *pull* any existing changes from the remote (online) repository.  
+
+Because this is your first pull, you'll need to include the `-u`, otherwise you'll get a ref error.
 
 ~~~
 git pull -u origin master
+~~~
+
+Otherwise, you can just do  
+
+~~~
+git pull origin master
 ~~~
 
 If we translate this into English, this says, git, pull any changes on the remote master branch to my local computer. For the next couple weeks, we will only be working with the master branch. Remember that I've talked about how you can fork and create different versions of things? We give these names, and by convention the main branch is called 'master'. Typically you want your master branch to consist of working code.  
