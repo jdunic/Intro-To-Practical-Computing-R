@@ -9,7 +9,7 @@ title: Assignments
 
 [Homework 01](homework_01.html) - due Sept 16
 
-[Homework 02](pages/homework/homework_02.html) - due Sept 29 
+[Homework 02](homework_02.html) - due Sept 29 
 
 
 --------------------------------------------------------------------------------
