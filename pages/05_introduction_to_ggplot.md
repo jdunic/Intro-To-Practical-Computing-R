@@ -12,6 +12,8 @@ WHEW! Okay, time for some plots. A much more rewarding endeavor. Plot making!
 
 Here is a brief description of the basic building blocks of a creating a ggplot.  
 
+
+{:.table}
 argument        | description of component
 --------------- | ------------------------------------------------------------ |
 data            | as a data.frame (long format!)
