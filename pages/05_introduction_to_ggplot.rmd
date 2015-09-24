@@ -4,11 +4,9 @@ title: Introduction to R
 description: Basics of R - R syntax - Helping yourself
 ---
 
-
-
 WHEW! Okay, time for some plots. A much more rewarding endeavor. Plot making!  
 
-### Basics.  
+### Basics - intro to the grammar of graphics
 
 Here is a brief description of the basic building blocks of a creating a ggplot.  
 
@@ -23,6 +21,8 @@ scale           | map values to the aesthetics, colour, size, shape (show up as 
 stat            | statistical transformations, summaries of data (e.g., line fits, etc., ) |
 facet           | splitting data across panels based on different subsets of the data |
 
+
+Let's start with a basic scatterplot of the 
 
 ~~~
 # Basic scatterplot
