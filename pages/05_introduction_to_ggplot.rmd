@@ -4,14 +4,25 @@ title: Introduction to R
 description: Basics of R - R syntax - Helping yourself
 ---
 
-WHEW! Okay, time for some plots. A much more rewarding endeavor. Plot making!  
+* Basics - intro to the grammar of graphics
+* Layering
+* ### Scales
+
+
+```{r, echo = FALSE}
+
+library(knitr)
+opts_chunk$set(tidy.opts = list(width.cutoff = 80))
+
+```
+
+WHEW! Okay, time for some plots. A much more rewarding endeavor. Plot making! 
+Make sure that you have installed the ggplot2 package.  
 
 ### Basics - intro to the grammar of graphics
 
 Here is a brief description of the basic building blocks of a creating a ggplot.  
 
-
-{:.table}
 argument        | description of component
 --------------- | ------------------------------------------------------------ |
 data            | as a data.frame (long format!)
@@ -22,93 +33,216 @@ stat            | statistical transformations, summaries of data (e.g., line fit
 facet           | splitting data across panels based on different subsets of the data |
 
 
-Let's start with a basic scatterplot of the 
+Let's start with a basic scatterplot of life expectancy over time. You'll notice 
+that we are telling ggplot that we will be using the gapminder data 
+(a data.frame!) and then telling it that we want the year on the x-axis and life 
+expectancy on the y. After that, we need to use the `+` to indicate that we want 
+to add another layer - in this case we need to add points. 
 
-~~~
+```{r}
+# Load ggplot2
+library(ggplot2)
+
+# Load gapminder
+library(gapminder)
+```
+
+```{r}
 # Basic scatterplot
 ggplot(data = gapminder, aes(x = year, y = lifeExp)) +
   geom_point()
-~~~
+```
 
-~~~
-# Let's add colour - let's look at a discrete variable - continent
+Now let's add some colour. Yes, \'colour\' or \'color\' can be used in the ggplot 
+functions. 
+
+```{r}
+# We're going to colour the discrete variable continent
 ggplot(data = gapminder, aes(x = year, y = lifeExp, colour = continent)) +
   geom_point()
-~~~
+```
 
-~~~
-You can assign ggplots to variables.
+Just as you can assign vectors, data.frames, and other R objects to a variable, 
+you can also assign ggplots to variables.
 
+```{r}
 p <-
 ggplot(data = gapminder, aes(x = year, y = lifeExp, colour = continent)) +
   geom_point()
+```
 
+And as we've seen before, no plot has been produced because it has been stored 
+as the variable p. To view our plot, we can just call that variable.
+
+```{r}
 p
-~~~
+```
 
+--------------------------------------------------------------------------------
 
 ### Layering
 
-~~~
-ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent))
+Here's where we're going to demonstrate the way that you add layers to build up 
+a plot.  
 
-ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent)) +
+See here, that when you just call ggplot, without any geoms, nothing gets 
+plotted! You need to also tell it to add something! 
+
+```{r, eval = FALSE}
+ggplot(data = gapminder, aes(x = year, y = lifeExp, by = country, colour = continent))
+```
+
+In this case, let's add a line!
+
+```{r}
+ggplot(data = gapminder, aes(x = year, y = lifeExp, by = country, colour = continent)) +
   geom_line()
+```
 
-ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent)) +
+What if we want to add more than a just a line? No problem, let ggplot know that 
+you are going to add something else using the `+`. Let's add some points. 
+
+```{r}
+ggplot(data = gapminder, aes(x = year, y = lifeExp, by = country, colour = continent)) +
   geom_line() + 
   geom_point()
+```
 
+Okay, that's great, but the points don't really stand out against the colour of 
+the lines. We can also be more specific with our layering and aesthetics. Notice 
+how I moved the aesthetics into the geom_line() function. You can think of 
+aesthetics that are listed in the ggplot() function as being the \'global\' 
+settings, laying the defaults for any geoms to come later int he plot. 
 
-We can also be more specific with our layering and aesthetics.
-
-ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
-  geom_line(aes(color=continent)) + 
+```{r}
+ggplot(data = gapminder, aes(x = year, y = lifeExp, by = country)) +
+  geom_line(aes(colour = continent)) + 
   geom_point()
+```
 
-~~~
+##### Exercise 1
 
-Exercise 1  
+Can you play with layers to create this plot? [Solution](#exercise-1-solution)
 
-Black dots behind coloured lines.
+```{r, echo = FALSE}
 
-~~~
 ggplot(data = gapminder, aes(x = year, y = lifeExp, by = country)) + 
     geom_point() +
     geom_line(aes(colour = continent))
-~~~
+```
 
-### Touching on scales
+
+
+### Scales
+
+Remember, scales are what will ultimately result your axes and variables that 
+are coded using a legend.  
 
 What is something that you notice between these two graphs?
 
-~~~
+```{r}
 ggplot(data = gapminder, aes(x = year, y = lifeExp, by = country, colour = log(gdpPercap))) + 
   geom_point()
 
 ggplot(data = gapminder, aes(x = year, y = lifeExp, by = country, colour = continent)) + 
   geom_point()
+```
 
-# Now let's look back at our data
+If you haven't noticed yet, let's look back at our data.  
 
+```{r}
 str(gapminder)
+```
 
-# What do you guys notice?
-~~~
+Cool! There is a difference in the way that the default colour scale operates for discrete and continuous variables!!!!!  
 
-Cool! There is a difference in the way that the default colour scale operates for discrete and continuous variables!!!!!
+Ok, now that we've figured that you, we can change the colour scales for our variables. With your neighbour see if you can change the colour scales that are 
+being used. You'll likely need to use the scales cheatsheet section and a little 
+bit of googling. Let me know if you guys need a hint. But I want you to take try
+first.  
 
-Ok, now that we've figured that you, we can change the colour scales for our variables. With your neighbour see if you can change the colour scales that are being used. You'll likely need to use the scales cheatsheet section and a little bit of googling. Let me know if you guys need a hint. But I want you to take try first. 
+##### Exercise 2
 
-Exercise 2
+[Solution](#exercise-2-solution)
 
-~~~
+```{r, echo = FALSE}
 ggplot(data = gapminder, aes(x = year, y = lifeExp, by = country, colour = log(gdpPercap))) + 
   geom_point() + 
   scale_colour_gradientn(colours = topo.colors(10))
-~~~
+```
 
-Use ggsave() to save one of your plots to a file. I'll give you some time to work with your neighbour to figure this out:  
+
+
+##### Exercise 3
+
+Try using `ggsave` to save one of your plots to a file! [Solution](#exercise-3-solution)
+
+--------------------------------------------------------------------------------
+
+
+### Stats
+
+Stats summarise data. Some examples include boxplots, model fits, density plots, 
+and bars/bins. These are very similar to using
+
+
+### Facetting
+
+
+
+
+
+
+
+### Other tips
+
+**1) Visualising overlapping data**  
+
+Let's return to our boring basic scatter plot.  
+
+```{r}
+ggplot(data = gapminder, aes(x = year, y = lifeExp)) +
+  geom_point()
+```
+
+Sometimes, when you have many data points that overlap, you want to have a 
+better idea of the amount of data for a given point. I find this often comes up 
+when you are plotting discrete variables with continous ones. There are two ways 
+we can get a better look at the data. We can use **jitter** or adjust the 
+**transparency** of the data.  
+
+
+```{r}
+# Using geom_jitter
+ggplot(data = gapminder, aes(x = year, y = lifeExp)) +
+    geom_jitter()
+```
+
+We could also use `geom_point(position = position_jitter())` instead.  
+
+I would prefer if this plot didn't have the points jittered so much. I can do 
+this by changing the width and height of the jitter.  
+
+```{r}
+# Using geom_jitter
+ggplot(data = gapminder, aes(x = year, y = lifeExp)) +
+    geom_jitter(position = position_jitter(w = 0.5, h = 0.5))
+```
+
+Another option is to use **transparency**. 
+
+```{r}
+# Adjusting the transparency of points
+
+ggplot(data = gapminder, aes(x = year, y = lifeExp)) + 
+    geom_point(alpha = 0.5) + 
+
+```
+
+--------------------------------------------------------------------------------
+
+**2) Themes**  
+
 
 
 ~~~
@@ -307,5 +441,32 @@ ggplot(data = subset(gapminder, year %in% 1997:2007)) +
 
 
 
+##### Exercise 1 Solution <a id="exercise-1-solution"\></a>
+
+```{r, echo = TRUE}
+ggplot(data = gapminder, aes(x = year, y = lifeExp, by = country)) + 
+    geom_point() +
+    geom_line(aes(colour = continent))
+```
+
+##### Exercise 2 Solution <a id="exercise-2-solution"\></a>
+
+```{r, echo = TRUE}
+ggplot(data = gapminder, aes(x = year, y = lifeExp, by = country, colour = log(gdpPercap))) + 
+  geom_point() + 
+  scale_colour_gradientn(colours = topo.colors(10))
+```
 
 
+##### Exercise 3 Solution <a id="exercise-3-solution"\></a>
+
+```{r}
+
+p <- 
+ggplot(data = gapminder, aes(x = year, y = lifeExp, by = country, colour = log(gdpPercap))) + 
+  geom_point() + 
+  scale_colour_gradientn(colours = topo.colors(10))
+
+ggsave(filename = 'my_first_plot.png', plot = p)
+
+```
