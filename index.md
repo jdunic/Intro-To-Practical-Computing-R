@@ -24,8 +24,9 @@ will be posted in the exercise section below.
 posted. It may seem a bit long so I may limit how much of it needs to be done. 
 For now, this is a good chance to start practising your plot making. 
 
-Walkthroughs from last week are still in progress. I have posted what is done up 
-to now, but I will continue to clean them up through the week. 
+[ggplot2 notes](pages/05_introduction_to_ggplot.html) are still in progress. I 
+have posted what is done up to now, but I will continue to clean them up through 
+the week. 
 
 #### Missed some news? Checkout the [News archive](pages/news_archive.html)
 --------------------------------------------------------------------------------

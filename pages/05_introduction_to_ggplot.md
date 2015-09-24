@@ -1,7 +1,30 @@
-WHEW! Okay, time for some plots. A much more rewarding endeavor.  
+---
+layout: page
+title: Introduction to R 
+description: Basics of R - R syntax - Helping yourself
+---
 
 
-You'll see 
+
+WHEW! Okay, time for some plots. A much more rewarding endeavor. Plot making!  
+
+### Basics.  
+
+Here is a brief description of the basic building blocks of a creating a ggplot.  
+
+argument        | description of component
+--------------- | ------------------------------------------------------------ |
+data            | as a data.frame (long format!)
+aesthetic (aes) | mapping variables to visualise properties - position, colour, 
+                  line, type, size.                                            |
+geom            | actual visualisation of the data                             |
+scale           | map values to the aesthetics, colour, size, shape (show up as 
+                  legents and axes)                                            |
+stat            | statistical transformations, summaries of data (e.g., line 
+                  fits, etc., )                                                |
+facet           | splitting data across panels based on different subsets of the 
+                  data                                                         |
+
 
 ~~~
 # Basic scatterplot
