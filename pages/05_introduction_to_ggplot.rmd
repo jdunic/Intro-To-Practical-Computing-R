@@ -4,9 +4,14 @@ title: Introduction to R
 description: Basics of R - R syntax - Helping yourself
 ---
 
-* Basics - intro to the grammar of graphics
-* Layering
-* ### Scales
+* [Basics - intro to the grammar of graphics](#basics)
+* [Layering](#layering)
+* [Scales](#scales)
+* [Stats](#stata)
+* [Facetting](#facetting)
+* [Other tips](#other-tips)
+
+
 
 
 ```{r, echo = FALSE}
@@ -19,7 +24,7 @@ opts_chunk$set(tidy.opts = list(width.cutoff = 80))
 WHEW! Okay, time for some plots. A much more rewarding endeavor. Plot making! 
 Make sure that you have installed the ggplot2 package.  
 
-### Basics - intro to the grammar of graphics
+### Basics - intro to the grammar of graphics <a id="basics"\></a>
 
 Here is a brief description of the basic building blocks of a creating a ggplot.  
 
@@ -80,7 +85,7 @@ p
 
 --------------------------------------------------------------------------------
 
-### Layering
+### Layering <a id="layering"\></a>
 
 Here's where we're going to demonstrate the way that you add layers to build up 
 a plot.  
@@ -133,7 +138,7 @@ ggplot(data = gapminder, aes(x = year, y = lifeExp, by = country)) +
 
 
 
-### Scales
+### Scales <a id="scales"\></a>
 
 Remember, scales are what will ultimately result your axes and variables that 
 are coded using a legend.  
@@ -156,7 +161,7 @@ str(gapminder)
 
 Cool! There is a difference in the way that the default colour scale operates for discrete and continuous variables!!!!!  
 
-Ok, now that we've figured that you, we can change the colour scales for our variables. With your neighbour see if you can change the colour scales that are 
+Ok, now that we've figured that out we can change the colour scales for our variables. With your neighbour see if you can change the colour scales that are 
 being used. You'll likely need to use the scales cheatsheet section and a little 
 bit of googling. Let me know if you guys need a hint. But I want you to take try
 first.  
@@ -180,21 +185,95 @@ Try using `ggsave` to save one of your plots to a file! [Solution](#exercise-3-s
 --------------------------------------------------------------------------------
 
 
-### Stats
+### Stats <a id="stats"\></a>
 
-Stats summarise data. Some examples include boxplots, model fits, density plots, 
-and bars/bins. These are very similar to using
+Stats summarise or transform data. Under the hood, new data frames are created 
+that contain these summaries/transformed data. For the most part, you don't need 
+to worry about this work happening under the hood.  
+
+All geoms have a default statistic that they use (or no transformation - plots 
+the raw data). Some examples of stats layers include density, boxplot, 
+
+```{r, eval = FALSE}
+
+ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) + 
+	geom_point() +
+	stat_smooth()
+
+```
 
 
-### Facetting
+```{r, eval = FALSE}
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) + 
+	geom_point() +
+	scale_x_log10() +
+	stat_smooth()
+```
+
+```{r, eval = FALSE}
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) + 
+	geom_point() +
+	scale_x_log10() +
+	stat_smooth(method = 'lm')
+```
+
+**Advanced notes on stats in ggplot2**  
+More coming on stats  - but for now, the above plots are the most you need to 
+know for examples. The notes I will add here (and have started below) are a more 
+advanced description of what's going on with stats. For the most part you can 
+just plug and play.
+
+We can start with a histogram of life expectancies across all of the continents. 
+If you are really interested, you can read more somewhere??? - yet to find a 
+good description outside of the [ggplot appendices](http://ggplot2.org/book/appendices.pdf)...
+
+```{r}
+ggplot(data = gapminder, aes(x = lifeExp)) + 
+	geom_histogram(binwidth = 1) 
+```
+
+Now, let's add a density function on top of this layer. 
+
+stats calculate the 
+
+```{r}
+
+ggplot(data = gapminder, aes(x = lifeExp, y = ..count..)) + 
+	geom_histogram(binwidth = 1, alpha = 0.7) + 
+	stat_density(geom = "line", colour = 'red')
+
+```
+
+--------------------------------------------------------------------------------
+
+### Facetting <a id="facetting"\></a>
+
+Facets allow you to visualise different subsets or groupings of your data on 
+different panels within a single plot. For example, I can facet my data by 
+continent (colouring to make each continent stand out better).
+
+```{r}
+ggplot(data = gapminder, aes(x = year, y = lifeExp, colour = continent)) + 
+  geom_point() + 
+  facet_wrap(~ continent)
+```
+
+I can also facet by two groupings. (Note that I subset the data to make this 
+manageable and rotate the x axis text to be more readable).
+# (note that I subset the data to make this a more manageable dataset)
+
+```{r}
+ggplot(data = subset(gapminder, year >= 1997), 
+       aes(x = gdpPercap, y = lifeExp, colour = continent)) + 
+  geom_point() + 
+  facet_grid(continent ~ year) + 
+  theme(axis.text.x = element_text(angle = 45))
+
+```
 
 
 
-
-
-
-
-### Other tips
+### Other tips <a id="other-tips"\></a>
 
 **1) Visualising overlapping data**  
 
@@ -235,13 +314,64 @@ Another option is to use **transparency**.
 # Adjusting the transparency of points
 
 ggplot(data = gapminder, aes(x = year, y = lifeExp)) + 
-    geom_point(alpha = 0.5) + 
+    geom_point(alpha = 0.5)
 
 ```
 
 --------------------------------------------------------------------------------
 
 **2) Themes**  
+
+The default ggplots are fine, but sometimes you want a plot that is more 
+minimalist, or to tweak the size of text, or thickness/appearance of lines, 
+margins, legends, etc. This is where themes come in. For the master list of 
+themes checkout the [ggplot2 theme docs](http://docs.ggplot2.org/current/theme.html).   
+
+One that I commonly use is the black and white theme.  
+
+```{r}
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, colour = continent)) + 
+  geom_point() + 
+  theme_bw()
+
+```
+
+I often make it without the grid lines.  
+
+```{r}
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, colour = continent)) + 
+  geom_point() + 
+  theme_bw() + 
+  theme(panel.grid = element_blank())
+
+```
+
+Or for my presentations I use this custom made white on black theme.  
+
+```{r}
+# Custom made theme
+theme_wb <- function() {
+  theme(panel.background = element_rect(fill = 'black'), 
+  plot.background = element_rect(fill = 'black'), 
+  axis.line = element_line(colour = 'white'), 
+  axis.text = element_text(colour = 'white'), 
+  axis.title = element_text(colour = 'white'), 
+  panel.grid = element_blank()
+  )
+}
+
+# My theme right now doesn't deal with legends, so for this demo I've 
+# removed it
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, colour = continent)) + 
+  geom_point() + 
+  theme_wb() + 
+	guides(colour = FALSE)
+  
+```
+
+
+
+
 
 
 
