@@ -7,7 +7,7 @@ description: Minimal tutorial on making a simple website with GitHub Pages
 
 ### News - September 22, 2015
 
-####Read the dplyr tutorial for Tuesday!
+#### * Read the dplyr tutorial for Tuesday!
 
 **Exercises:** An initial set of exercises that have you practice subsetting 
 vectors can be found [**here**](pages/exercises_01_subsetting.html). More exercises 
