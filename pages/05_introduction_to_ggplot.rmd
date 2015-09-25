@@ -11,13 +11,15 @@ description: Basics of R - R syntax - Helping yourself
 * [Facetting](#facetting)
 * [Other tips](#other-tips)
 
-
+--------------------------------------------------------------------------------
 
 
 ```{r, echo = FALSE}
 
 library(knitr)
-opts_chunk$set(tidy.opts = list(width.cutoff = 80))
+opts_chunk$set(tidy.opts = list(width.cutoff = 80), 
+							 message = FALSE, 
+							 warning = FALSE)
 
 ```
 
