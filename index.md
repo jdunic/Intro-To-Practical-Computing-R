@@ -13,6 +13,8 @@ description: Minimal tutorial on making a simple website with GitHub Pages
 vectors can be found [**here**](pages/exercises_01_subsetting.html). More exercises 
 will be posted in the exercise section below.  
 
+[Dplyr questions from Thursday's class](pages/dplyr_sept24_exercises.html)  
+
 
 **Homework:** A draft of [homework 2](pages/homework/homework_02.html) is now 
 posted. It may seem a bit long so I may limit how much of it needs to be done. 

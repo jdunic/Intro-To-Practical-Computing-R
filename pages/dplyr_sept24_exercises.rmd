@@ -1,0 +1,71 @@
+---
+layout: page
+title: Dplyr exercises from Sept 24 
+---
+
+### Exercises 
+
+1. Calculate the mean gdpPercap for each country.
+
+2. Calculate the mean gdp for each country.
+
+3. Create a graph of the total population of each continent over time.
+
+4. For each continent, what country had the smallest population in 1952, 1972, 
+   and 2002? (google for help if you need to!)
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+
+### Solutions
+
+```{r, warning=FALSE, message=FALSE}
+library(gapminder)
+library(ggplot2)
+library(dplyr)
+
+# 1. Calculate the mean gdpPercap for each country.
+
+gapminder %>% 
+  group_by(country) %>%
+    summarise(mean_gdpPercap = mean(gdpPercap))
+
+# 2. Calculate the mean gdp for each country.
+
+gapminder %>% 
+  mutate(gdp = gdpPercap * pop) %>%
+  group_by(country) %>%
+  summarise(mean_gdp = mean(gdp))
+
+# 3. Create a graph of the total population of each continent over time.
+
+gapminder %>%
+  group_by(continent) %>%
+  summarise(total_pop = sum(pop)) %>%
+ggplot(data = ., aes(x = continent, y = total_pop)) + 
+    geom_bar(stat = "identity")
+
+# Note - read the error message if you have difficulties! We can talk about why 
+# we do this in class if you are curious. 
+
+# Alternatively you could plot points: 
+gapminder %>%
+    group_by(continent) %>%
+    summarise(total_pop = sum(pop)) %>%
+
+ggplot(data = ., aes(x = continent, y = total_pop)) + 
+    geom_point()
+
+
+# 4. For each continent, what country had the smallest population in 1952, 1972, 
+#    and 2002? (google for help if you need to!)
+
+gapminder %>% 
+  filter(year %in% c(1952, 1972, 2002)) %>%
+  group_by(continent, year) %>% 
+  slice(which.min(pop))
+
+```
