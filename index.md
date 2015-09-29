@@ -5,37 +5,49 @@ tagline: An introductory class
 description: Minimal tutorial on making a simple website with GitHub Pages
 ---
 
-### News - September 22, 2015
+### News - September 29, 2015
 
-#### * Read the dplyr tutorial for Tuesday!
+**There is a reading for Thursday!**  
 
-**Exercises:** An initial set of exercises that have you practice subsetting 
-vectors can be found [**here**](pages/exercises_01_subsetting.html). More exercises 
-will be posted in the exercise section below.  
+**Exercises:** None currently.  
 
-[Dplyr questions from Thursday's class](pages/dplyr_sept24_exercises.html)  
+**Homework:** [Homework 2](pages/homework/homework_02.html) is due on Wednesday. 
+Remember to follow a style guide - consistent, coherent, easy to read code--it 
+makes life better for all of us (mostly you!).   
 
-
-**Homework:** A draft of [homework 2](pages/homework/homework_02.html) is now 
-posted. It may seem a bit long so I may limit how much of it needs to be done. 
-For now, this is a good chance to start practising your plot making.   
+* Hadley Wickham's style guide - 
+  [http://adv-r.had.co.nz/Style.html](http://adv-r.had.co.nz/Style.html)
+* Google's R style guide - 
+  [http://google-styleguide.googlecode.com/svn/trunk/Rguide.xml](http://google-styleguide.googlecode.com/svn/trunk/Rguide.xml) 
 
 **Notes**  
-[ggplot2 notes](pages/05_introduction_to_ggplot.html) are still in progress. I 
-have posted what is done up to now, but I will continue to clean them up through 
-the week. 
+This [dplyr tutorial](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) is quite good, I recommend checking it out if you have been 
+struggling, or would like some review.   
 
 #### Missed some news? Checkout the [News archive](pages/news_archive.html)
 --------------------------------------------------------------------------------
 
 ### Readings for Tuesday September 29th
 
-* Read through and try out this online [dplyr tutorial](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) - it will clarify what we did in class.  
+* Hadley Wickham's chapter on subsetting in Advanced-R [http://adv-r.had.co.nz/Subsetting.html](http://adv-r.had.co.nz/Subsetting.html)
 
-* For those who are itching for more readings, feel free to also look over 
-[*The split-apply-combine strategy for data analysis*](http://www.jstatsoft.org/v40/i01/paper). Although it refers to a package plyr that has been superceded by Hadley's 
-dplyr package, the fundamental approach and description of data analysis remains 
-the same.
+I encourage you to enter some of his demonstrations in R.   
+
+**Here are some questions to help focus your reading:**  
+
+1. What are the three subsetting operators?
+
+2. What is a vector?
+
+3. What types of vectors are there (you have already seen at least three of these)?
+
+4. What are 5 different data types (ignore the S3/S4 stuff)?
+
+5. If this was enough, you can stop at the Subsetting and Assignment heading. 
+
+
+
+
 
 
 ------------------------------------------------------------------------------
