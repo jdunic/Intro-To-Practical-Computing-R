@@ -9,7 +9,8 @@ description: Minimal tutorial on making a simple website with GitHub Pages
 
 **There is a reading for Thursday!**  
 
-**Exercises:** None currently.  
+**Exercises:** These are the exercises that we went over in class today: 
+[dplyr examples](pages/dplyr_sept24_exercises.html)
 
 **Homework:** [Homework 2](pages/homework/homework_02.html) is due on Wednesday. 
 Remember to follow a style guide - consistent, coherent, easy to read code--it 
