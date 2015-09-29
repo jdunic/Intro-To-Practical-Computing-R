@@ -4,6 +4,37 @@ title: Readings
 description: Weekly and supplementary readings
 ---
 
+
+### Readings for Tuesday September 29th
+
+* Hadley Wickham's chapter on subsetting in Advanced-R [http://adv-r.had.co.nz/Subsetting.html](http://adv-r.had.co.nz/Subsetting.html)
+
+I encourage you to enter some of his demonstrations in R.   
+
+**Here are some questions to help focus your reading:**  
+
+1. What are the three subsetting operators?
+
+2. What is a vector?
+
+3. What types of vectors are there (you have already seen at least three of these)?
+
+4. What are 5 different data types (ignore the S3/S4 stuff)?
+
+5. If this was enough, you can stop at the Subsetting and Assignment heading. 
+
+
+
+### Readings for Tuesday September 29th
+
+* Read through and try out this online [dplyr tutorial](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) - it will clarify what we did in class.  
+
+* For those who are itching for more readings, feel free to also look over 
+[*The split-apply-combine strategy for data analysis*](http://www.jstatsoft.org/v40/i01/paper). Although it refers to a package plyr that has been superceded by Hadley's 
+dplyr package, the fundamental approach and description of data analysis remains 
+the same.
+
+
 ### Readings for Thursday, Sept 17
 
 Coding style matters, it makes your code more readable--a benefit to both future 
