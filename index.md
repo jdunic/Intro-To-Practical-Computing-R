@@ -5,21 +5,18 @@ tagline: An introductory class
 description: Minimal tutorial on making a simple website with GitHub Pages
 ---
 
-### News - September 29, 2015
+### News - October 1, 2015
 
-**There is a reading for Thursday!**  
+**Slides** [Slides from today - Oct 1 lecture](../../Desktop/intro_to_computing/Oct1.pptx)
 
-**Exercises:** These are the exercises that we went over in class today: 
+**Exercises:** These are the exercises that we went over in class the other day: 
 [dplyr examples](pages/dplyr_sept24_exercises.html)
 
-**Homework:** [Homework 2](pages/homework/homework_02.html) is due on Wednesday. 
-Remember to follow a style guide - consistent, coherent, easy to read code--it 
-makes life better for all of us (mostly you!).   
+**Homework:** 
 
-* Hadley Wickham's style guide - 
-  [http://adv-r.had.co.nz/Style.html](http://adv-r.had.co.nz/Style.html)
-* Google's R style guide - 
-  [http://google-styleguide.googlecode.com/svn/trunk/Rguide.xml](http://google-styleguide.googlecode.com/svn/trunk/Rguide.xml) 
+Homework 3 should be posted by Saturday. It will be due next Wednesday.  
+
+Peer review assignments will be given out by email shortly.  
 
 **Notes**  
 This [dplyr tutorial](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) is quite good, I recommend checking it out if you have been 
