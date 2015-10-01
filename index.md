@@ -7,7 +7,7 @@ description: Minimal tutorial on making a simple website with GitHub Pages
 
 ### News - October 1, 2015
 
-**Slides** [Slides from today - Oct 1 lecture](../../Desktop/intro_to_computing/Oct1.pptx)
+**Slides** [Slides from today - Oct 1 lecture](/Users/jillian/Desktop/intro_to_computing/Oct1.pptx)
 
 **Exercises:** These are the exercises that we went over in class the other day: 
 [dplyr examples](pages/dplyr_sept24_exercises.html)
