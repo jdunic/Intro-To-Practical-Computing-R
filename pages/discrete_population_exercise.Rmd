@@ -21,59 +21,118 @@ case, we will look at discrete-time population growth. This means that the
 system changes in discrete time steps (e.g., $t_{1} = 1, t_{2} = 2, t_{3} = 3$) 
 rather than continuous time. Discrete-time population growth is typically observed in species that have  specific breeding seasons typically occurring once a year. Population size at one time step ($N_{t}$) is dependent on the population size before it $N_{t-1}$. 
 
-We can calculate a predicted population size $N_{t}$ at time $t$ in the future if we are given an initial population size $N_{0}$, a per capita population growth rate $r$, and carrying capacity $k$.
+We can calculate a predicted population size $N_{t}$ at time $t$ in the future if we are given an initial population size $N_{0}$, a per capita population growth rate $r$, and carrying capacity $k$.  
 
 For today's example, we will explore how population growth changes as we change 
 the per capita growth rate $r$. The per captia growth rate $r$ is a useful value to know, when $r = 0$, the per capita growth rate is zero, when $r > 0$ there is an increase in per capita growth, and when $r < 0$. However, as $r$ increases, 
 there reaches a point where population growth is chaotic.  
 
 --------------------------------------------------------------------------------
-1) Write a function in R that allows you to calculate the size a population 
-given a starting population size $N_0$, per capita growth rate $r$, carrying 
-capacity $k$, and number of generations that you would like, in this case $ngen = 100$.  
+
+**1)** We know that we can use R as a calculator. Let's calculate some values using this equation!  
 
 Equation for discrete-time logistical growth  
 
-* $N_{t} = r * N_{t-1} * (1 - N_{i - 1} / K)$ 
+* $N_{t} = N_{t - 1} + r * N_{t - 1} * (1 - {N_{t - 1} / K})$
 
+**a)** Given a starting population $N_{1}$ of 2 individuals, a per capita growth rate of $r = 1$, and carrying capacity of $k = 1000$, how many individuals should there be in the next generation? I'll give you a start for how I'd set myself up to calculate this in R.
 
-I have started the function for you. Explain the code that is already there using comments, and fill in the parts that are missing in the blanks.
+```{r, eval = FALSE}
+N_1 = ______ 
+r   = ______
+k   = ______
+
+N_2 = ______
+
+```
+
+**b)** Now calculate the population when t = 2 (generation 2)  
+
+**c)** One more time! Calculate the population when t = 3.  
+
+```{r, echo = FALSE, eval = FALSE}
+# Answers for myself
+# a)
+N_1 = 1 
+r   = 1
+k   = 1000
+
+N_2 = N_1 + r * N_1 * (1 - N_1 / k)
+N_2
+
+# b)
+N_3 = N_2 + r * N_2 * (1 - N_2 / k)
+N_3
+
+# c)
+N_4 = N_3 + r * N_3 * (1 - N_3 / k)
+N_4
+
+```
+
+--------------------------------------------------------------------------------
+
+Ok, this can be a bit tedious. What if I asked you to calculate for 100 generations? You would be here all day.  
+
+2) Instead, let's write a function in R that allows you to calculate the size a population given a starting population size $N_1$, per capita growth rate $r$, carrying capacity $k$, and number of generations that you would like, in this case $ngen = 100$. *hint: i have just given you your arguments*  
+
+I have started the function for you. Explain the code that is already there using comments, and fill in the parts that are missing in the blanks. Also refer to the example function that I have handed out. 
 
 ```{r, eval = FALSE}
 _______________ <- function(_______________) {
   n <- rep(NA, ngen)
-  n[1] <- _______________
+  n[1] <- ninit
 
   for (i in 2:ngen) {
-    _______________ # calculate population size - hint eqn!
+    n[i] = _______________ # calculate population size - hint eqn!
   }
   _______________ # return value
 }
 
 ```
 
+Woot! Take your function for a spin. Do you get the correct values? Compare the results with the values that you calculated by hand above in question 1. 
 
-
-
-
-
-
-
-```{r}
-library(ggplot2)
-dgrowth <- function(r=2, ninit=0.1, k=1, ngen=100){
+```{r, echo = FALSE}
+dgrowth <- function(r=1.1, ninit=1, k=100, ngen=100){
   n <- rep(NA, ngen)
   n[1] <- ninit
 
   for(i in 2:ngen){
-    n[i] <- r * (n[i - 1] * (1 - n[i - 1] / k))
+    n[i] = n[i - 1] + r * n[i - 1] * (1 - (n[i - 1] / k))
   }
 
-  n
+  return(n) 
+}
 
+dgrowth(r = 1, ninit = 1, k = 1000, ngen = 2)
+dgrowth(r = 1, ninit = 1, k = 1000, ngen = 3)
+dgrowth(r = 1, ninit = 1, k = 1000, ngen = 4)
 
+```
 
-qplot(1:100, dgrowth(r=4), geom="line")
+Cool! This function should return the population values for each generation. Let's make a quick plot of how population increases with time. First, let's make a data frame where we bind one column of time values with our vector/column of population size at time step t (calcuated using our handy function). This time let's look at 500 time steps.
+
+```{r, eval = FALSE}
+pop_500 <- _________
+time_500 <- _________
+pop_df <- as.data.frame(_________, _________)
+```
+
+You should end up with something *like* this (I say *like* because I format things to be pretty for presentation!)
+
+```{r, echo = FALSE}
+library(data.table)
+
+dgrowth(r = 1, ninit = 1, k = 1000, ngen = 100)
+
+pop_100 <- dgrowth(r = 2, ninit = 1, k = 1000, ngen = 500)
+data.table()
+```
+
+3) 
+
+```{r}
 
 
 
