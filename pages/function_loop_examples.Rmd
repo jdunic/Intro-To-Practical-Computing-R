@@ -1,0 +1,43 @@
+Example function
+
+```{r}
+add_3 <- function(arg1) {
+  new_value <- arg1 + 3
+  return(new_value)
+}
+
+add_3(10)
+
+```
+
+Example for loop (with print outs to help you navigate what's going on! - thank you Lucy and Michael :D )
+
+```{r}
+
+x <- c(13, 14, 22, 100, 7, 4)
+print(x)
+
+for (i in 1:length(x)) {
+    print(i)
+    numn <- x[i]
+    print(numn)
+    numprint <- paste("n =", numn)
+    print(numprint)
+  }
+```
+
+```{r, echo = FALSE, eval = FALSE}
+add3 <- function(________) {
+    new_value <- number + 3
+    return(new_value)
+}
+```
+
+```{r, echo = FALSE, eval = FALSE}
+
+max_minus_min <- function(________, ________) {
+    ________ <- ________ - ________
+    ________
+}
+
+
