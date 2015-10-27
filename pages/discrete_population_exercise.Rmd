@@ -1,3 +1,17 @@
+---
+output: html_document
+---
+## Bringing it all together
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+
+library(gapminder)
+library(ggplot2)
+library(dplyr)
+```
+
+--------------------------------------------------------------------------------
+
 By now you can: 
 
 * use ggplot2 to make great graphics
@@ -14,6 +28,8 @@ This is a powerful toolset.
 Let's use these tools to explore the discrete time logistical population growth using R.  
 
 --------------------------------------------------------------------------------
+
+### Discrete-time logistic population growth exercise
 
 Population growth is a density-dependent process, meaning that as the size of a 
 population, *N*, changes, so too does rate of population growth. In this 
@@ -35,7 +51,9 @@ Equation for discrete-time logistical growth
 
 * $N_{t} = N_{t - 1} + r * N_{t - 1} * (1 - {N_{t - 1} / K})$
 
-**a)** Given a starting population $N_{1}$ of 2 individuals, a per capita growth rate of $r = 1$, and carrying capacity of $k = 1000$, how many individuals should there be in the next generation? I'll give you a start for how I'd set myself up to calculate this in R.
+--------------------------------------------------------------------------------
+
+**a)** Given a starting population $N_{1}$ of 2 individuals, a per capita growth rate of $r = 1$, and carrying capacity of $k = 1000$, how many individuals should there be in the next generation? I'll give you a start for how I'd start to set myself up to calculate this in R.
 
 ```{r, eval = FALSE}
 N_1 = ______ 
@@ -46,7 +64,11 @@ N_2 = ______
 
 ```
 
+--------------------------------------------------------------------------------
+
 **b)** Now calculate the population when t = 2 (generation 2)  
+
+--------------------------------------------------------------------------------
 
 **c)** One more time! Calculate the population when t = 3.  
 
@@ -79,7 +101,7 @@ Ok, this can be a bit tedious. What if I asked you to calculate for 100 generati
 I have started the function for you. Explain the code that is already there using comments, and fill in the parts that are missing in the blanks. Also refer to the example function that I have handed out. 
 
 ```{r, eval = FALSE}
-_______________ <- function(_______________) {
+dgrowth <- function(_______________) {
   n <- rep(NA, ngen)
   n[1] <- ninit
 
@@ -94,7 +116,7 @@ _______________ <- function(_______________) {
 Woot! Take your function for a spin. Do you get the correct values? Compare the results with the values that you calculated by hand above in question 1. 
 
 ```{r, echo = FALSE}
-dgrowth <- function(r=1.1, ninit=1, k=100, ngen=100){
+dgrowth <- function(r = 1, ninit = 1, k = 1000, ngen = 100){
   n <- rep(NA, ngen)
   n[1] <- ninit
 
@@ -111,52 +133,142 @@ dgrowth(r = 1, ninit = 1, k = 1000, ngen = 4)
 
 ```
 
-Cool! This function should return the population values for each generation. Let's make a quick plot of how population increases with time. First, let's make a data frame where we bind one column of time values with our vector/column of population size at time step t (calcuated using our handy function). This time let's look at 500 time steps.
+--------------------------------------------------------------------------------
+
+**3)** Cool! This function should return the population values for each generation. Let's make a quick plot of how population increases with time.   
+ 
+**a)** First, let's make a data frame where we bind one column of time values with our vector/column of population size at time step t (calcuated using our handy function). This time let's look at 100 time steps.
 
 ```{r, eval = FALSE}
-pop_500 <- _________
-time_500 <- _________
-pop_df <- as.data.frame(_________, _________)
+ngen = 100
+pop_100 <- _________
+time_100 <- _________
+pop_df <- data.frame(_________, _________)
 ```
 
-You should end up with something *like* this (I say *like* because I format things to be pretty for presentation!)
+You should end up with something *like* this (I say *like* because I format things to be pretty for presentation!)  
 
 ```{r, echo = FALSE}
-library(data.table)
 
-dgrowth(r = 1, ninit = 1, k = 1000, ngen = 100)
+ngen = 100
+pop_100 <- dgrowth(r = 1, ninit = 1, k = 1000, ngen = 100)
+time_100 <- 1:ngen
+pop_df <- data.frame(N = pop_100, time = time_100)
+head(pop_df)
 
-pop_100 <- dgrowth(r = 2, ninit = 1, k = 1000, ngen = 500)
-data.table()
 ```
 
-3) 
+--------------------------------------------------------------------------------
+
+**b)** Great! Time to plot! - don't forget to load the necessary libraries!
 
 ```{r}
+ggplot(data = pop_df, aes(x = time_100, y = pop_100)) + 
+  geom_line()
 
+```
 
+--------------------------------------------------------------------------------
 
-pops <- data.frame(r=2, t=1:100, n=dgrowth())
+**4** Awesome! Ok. Now let's do some exploring. Let's take advantage of our newly minted function and our recent knowledge of for loops! I mentioned at the beginning of this exercise that changing the value of $r$ changes the rate of population growth  
 
-for(r in seq(2.1, 4, .01)){
-  popr = data.frame(r=r, t=1:100, n=dgrowth(r))
+Let's calculate the population growth for 100 generations, starting at a population size of 1, and carrying capacity *k* of 1000. But, let's play with values of *r*.  
 
-  pops <- rbind(pops, popr)
+--------------------------------------------------------------------------------
 
+**a)** Set your input values in preparation for an upcoming for loop! We will be calculating a set of predicted populations based on values of *r* from 0.7 to 3 by an increment of 0.1. (remember to look up functions you haven't seen before!)
+
+```{r, eval = FALSE}
+# Setup your data!
+ninit = _______
+ngen  = _______
+k = _______
+r_vals = seq(_______)
+```
+
+--------------------------------------------------------------------------------
+
+**b)** Before we begin, let's take a detour to learn a new function that can be super handy. Sometimes you create one vector or dataframe and then want to add rows to it. Describe what is happening in the code below (add comments as notes for future you!)
+
+```{r}
+pop1 <- dgrowth(r = 1, ninit = 1, k = 1000, ngen = 4)
+pop_df1 <- data.frame(N = pop1, time = 1:4)
+
+pop2 <- dgrowth(r = 2, ninit = 1, k = 1000, ngen = 4)
+pop_df2 <- data.frame(N = pop2, time = 1:4)
+
+pops_df <- rbind(pop_df1, pop_df2)
+
+```
+
+--------------------------------------------------------------------------------
+
+**c)** Ok, back to looping. Let's start by just making a loop that calculates the populations for 100 generations using our different values of *r*. You can look at the example for loops 
+
+```{r, eval = FALSE}
+for (_______) {
+  dgrowth(_______)
 }
 
+```
+
+--------------------------------------------------------------------------------
+
+**d)** Now let's store each new set of values in a data.frame called pops. 
 
 
+```{r, eval = FALSE}
+# Create a dataframe with an initial population using r = 1. This is the 
+# data.frame that we will add rows to.
+pops <- data.frame(r = 0.6, t = 1:ngen, N = dgrowth(r = 1, ninit = ninit, k = k, ngen = ngen))
 
-ggplot(pops, aes(x=t, y=n)) +
+
+for(________){
+  N    <- ________
+  popr <- data.frame(________)
+  pops <- ________
+}
+
+```
+
+--------------------------------------------------------------------------------
+
+**e)** Yay! Time for more plots! See if you can make this one!
+
+```{r, echo = FALSE}
+ninit = 1
+ngen  = 100
+k = 1000
+r_vals = seq(from = 0.7, to = 3, by = 0.1)
+
+pops <- data.frame(r = 0.6, t = 1:ngen, N = dgrowth(r = 1, ninit = ninit, k = k, ngen = ngen))
+
+#dgrowth(r = 3, ninit = ninit, k = k, ngen = ngen)
+
+for(r in r_vals){
+  N    <- dgrowth(r = r, ninit = ninit, k = k, ngen = ngen)
+  popr <- data.frame(r = r, t = 1:ngen, N = N)
+  pops <- rbind(pops, popr)
+}
+
+ggplot(pops, aes(x = t, y = N)) +
   geom_line() +
-  facet_wrap(~r)
+  facet_wrap(~ r)
+```
 
+--------------------------------------------------------------------------------
 
-equilibrium <- group_by(pops, r) %>%
+**f)** One last bit of fun. Let's use some dplyr to grab the last 10 rows for each group of r values.
+
+```{r, echo = FALSE}
+equilibrium <- 
+  group_by(pops, r) %>%
   slice(90:100)
+```
+Now let's plot those values and see what we get!
 
-ggplot(equilibrium, aes(x=r, y=n, color=factor(r))) +
+```{r, echo = FALSE}
+ggplot(equilibrium, aes(x = r, y = N, color = factor(r))) +
   geom_point() +
-  scale_color_discrete(guide=FALSE)
+  scale_color_discrete(guide = FALSE)
 ```
