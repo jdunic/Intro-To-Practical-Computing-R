@@ -1,6 +1,7 @@
 ---
+title: "Introduction to R"
 layout: page
-title: Introduction to R 
+output: pdf_document
 description: Basics of R - R syntax - Helping yourself
 ---
 

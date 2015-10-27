@@ -24,7 +24,6 @@ I encourage you to enter some of his demonstrations in R.
 5. If this was enough, you can stop at the Subsetting and Assignment heading. 
 
 
-
 ### Readings for Tuesday September 29th
 
 * Read through and try out this online [dplyr tutorial](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) - it will clarify what we did in class.  
