@@ -1,0 +1,103 @@
+By now you can: 
+
+* use ggplot2 to make great graphics
+* use dplyr to filter data.frames, produce summary values/statistics, and create new calculated columns
+* use for loops to iterate through a vector/list of values and perform a task
+* write custom functions 
+* understand the difference between different types of objects in R (data.frames, lists, matrices, atomic vectors - double, integer, character, logical)
+* subset/index values in the R objects above using the indexing operators: \$, [], and [[]]
+* read and interpret R help files (when they aren't just jargon)
+* describe what an argument of a function is
+
+This is a powerful toolset.   
+
+Let's use these tools to explore the discrete time logistical population growth using R.  
+
+--------------------------------------------------------------------------------
+
+Population growth is a density-dependent process, meaning that as the size of a 
+population, *N*, changes, so too does rate of population growth. In this 
+case, we will look at discrete-time population growth. This means that the 
+system changes in discrete time steps (e.g., $t_{1} = 1, t_{2} = 2, t_{3} = 3$) 
+rather than continuous time. Discrete-time population growth is typically observed in species that have  specific breeding seasons typically occurring once a year. Population size at one time step ($N_{t}$) is dependent on the population size before it $N_{t-1}$. 
+
+We can calculate a predicted population size $N_{t}$ at time $t$ in the future if we are given an initial population size $N_{0}$, a per capita population growth rate $r$, and carrying capacity $k$.
+
+For today's example, we will explore how population growth changes as we change 
+the per capita growth rate $r$. The per captia growth rate $r$ is a useful value to know, when $r = 0$, the per capita growth rate is zero, when $r > 0$ there is an increase in per capita growth, and when $r < 0$. However, as $r$ increases, 
+there reaches a point where population growth is chaotic.  
+
+--------------------------------------------------------------------------------
+1) Write a function in R that allows you to calculate the size a population 
+given a starting population size $N_0$, per capita growth rate $r$, carrying 
+capacity $k$, and number of generations that you would like, in this case $ngen = 100$.  
+
+Equation for discrete-time logistical growth  
+
+* $N_{t} = r * N_{t-1} * (1 - N_{i - 1} / K)$ 
+
+
+I have started the function for you. Explain the code that is already there using comments, and include your own where necessary.
+
+```{r, eval = FALSE}
+dgrowth <- function(your arguments here) {
+  n <- rep(NA, ngen)
+  n[1] <- ______
+
+  for (i in 2:ngen) {
+    ______________ # calculate population size - hint eqn!
+  }
+  return(_______)
+}
+
+```
+
+
+
+
+
+
+
+
+```{r}
+library(ggplot2)
+dgrowth <- function(r=2, ninit=0.1, k=1, ngen=100){
+  n <- rep(NA, ngen)
+  n[1] <- ninit
+
+  for(i in 2:ngen){
+    n[i] <- r * (n[i - 1] * (1 - n[i - 1] / k))
+  }
+
+  n
+
+
+
+qplot(1:100, dgrowth(r=4), geom="line")
+
+
+
+pops <- data.frame(r=2, t=1:100, n=dgrowth())
+
+for(r in seq(2.1, 4, .01)){
+  popr = data.frame(r=r, t=1:100, n=dgrowth(r))
+
+  pops <- rbind(pops, popr)
+
+}
+
+
+
+
+ggplot(pops, aes(x=t, y=n)) +
+  geom_line() +
+  facet_wrap(~r)
+
+
+equilibrium <- group_by(pops, r) %>%
+  slice(90:100)
+
+ggplot(equilibrium, aes(x=r, y=n, color=factor(r))) +
+  geom_point() +
+  scale_color_discrete(guide=FALSE)
+```
