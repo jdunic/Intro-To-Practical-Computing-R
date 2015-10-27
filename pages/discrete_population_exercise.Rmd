@@ -37,17 +37,17 @@ Equation for discrete-time logistical growth
 * $N_{t} = r * N_{t-1} * (1 - N_{i - 1} / K)$ 
 
 
-I have started the function for you. Explain the code that is already there using comments, and include your own where necessary.
+I have started the function for you. Explain the code that is already there using comments, and fill in the parts that are missing in the blanks.
 
 ```{r, eval = FALSE}
-dgrowth <- function(your arguments here) {
+_______________ <- function(_______________) {
   n <- rep(NA, ngen)
-  n[1] <- ______
+  n[1] <- _______________
 
   for (i in 2:ngen) {
-    ______________ # calculate population size - hint eqn!
+    _______________ # calculate population size - hint eqn!
   }
-  return(_______)
+  _______________ # return value
 }
 
 ```
