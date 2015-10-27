@@ -11,6 +11,10 @@ description: Minimal tutorial on making a simple website with GitHub Pages
 
 **Exercises:** 
 
+[Discrete population growth exercises for pair-programming](pages/discrete_population_exercise.html)
+
+[Function and for loop example](pages/function_loop_examples.html)
+
 [For loop exercises for pair-programming](pages/for_loops_inclass_exercises.html)
 
 **Homework:** 
