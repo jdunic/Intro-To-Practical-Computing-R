@@ -5,7 +5,9 @@ tagline: An introductory class
 description: Minimal tutorial on making a simple website with GitHub Pages
 ---
 
-### News - October 20, 2015
+### News - November 3, 2015
+
+[Some code for today](pages/nov_3.html)
 
 **Slides** [Slides Oct 1 lecture](pages/slides/Oct1.pptx)
 
