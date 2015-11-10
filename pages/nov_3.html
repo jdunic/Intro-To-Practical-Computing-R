@@ -61,22 +61,18 @@ img {
 
 
 
-<p>Install/load the following packages:</p>
+<div id="setup" class="section level4">
+<h4>Setup</h4>
+<ul>
+<li><p>Checkout the etherpad for today <a href="https://etherpad.wikimedia.org/p/mogBNf6uEm"><a href="https://etherpad.wikimedia.org/p/mogBNf6uEm" class="uri">https://etherpad.wikimedia.org/p/mogBNf6uEm</a></a></p></li>
+<li><p>Install/load the following packages:</p></li>
+</ul>
 <pre class="r"><code>library(tidyr)
-library(dplyr)</code></pre>
-<pre><code>## 
-## Attaching package: 'dplyr'
-## 
-## The following object is masked from 'package:stats':
-## 
-##     filter
-## 
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<pre class="r"><code>library(gapminder)</code></pre>
-<pre><code>## Warning: package 'gapminder' was built under R version 3.1.3</code></pre>
-<p>Run this code excerpt to create the dataframes that we will be using in class.</p>
+library(dplyr)
+library(gapminder)</code></pre>
+<ul>
+<li>Run this code excerpt to create the dataframes that we will be using in class.</li>
+</ul>
 <pre class="r"><code>gap &lt;- 
 filter(gapminder, grepl(&quot;^N&quot;, country)) %&gt;% 
   filter(year %in% c(1952, 1977, 2007)) %&gt;% 
@@ -103,6 +99,7 @@ gap_with_cont</code></pre>
 ## 1     Namibia    Africa   42   56   53
 ## 2       Nepal      Asia   36   47   64
 ## 3 Netherlands    Europe   72   75   80</code></pre>
+<hr />
 <p>Using gather() - class demo</p>
 <pre class="r"><code>tidied_gap &lt;- gather(data = gap, key = year, value = lifeExp, -country)
 tidied_gap</code></pre>
@@ -258,6 +255,7 @@ unite(data = tidied_gap_with_cont, col = location_key, country:continent, sep = 
 <p>madf3</p>
 <p>madf4 &lt;- separate(madf3, abundance, c(“density”, “cover”), sep=“___“)</p>
 <p>madf4</p>
+</div>
 
 
 </div>
