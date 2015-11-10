@@ -61,6 +61,7 @@ img {
 
 
 
+<p>Install/load the following packages:</p>
 <pre class="r"><code>library(tidyr)
 library(dplyr)</code></pre>
 <pre><code>## 
@@ -75,58 +76,100 @@ library(dplyr)</code></pre>
 ##     intersect, setdiff, setequal, union</code></pre>
 <pre class="r"><code>library(gapminder)</code></pre>
 <pre><code>## Warning: package 'gapminder' was built under R version 3.1.3</code></pre>
+<p>Run this code excerpt to create the dataframes that we will be using in class.</p>
 <pre class="r"><code>gap &lt;- 
 filter(gapminder, grepl(&quot;^N&quot;, country)) %&gt;% 
   filter(year %in% c(1952, 1977, 2007)) %&gt;% 
   slice(1:9) %&gt;% 
   select(-continent, -gdpPercap, -pop) %&gt;% 
-  mutate(lifeExp = round(lifeExp))
+  mutate(lifeExp = round(lifeExp)) %&gt;% 
+  spread(key = year, value = lifeExp)
 
-life_exps &lt;- spread(gap, key = year, value = lifeExp)
-
-life_exps</code></pre>
+gap</code></pre>
 <pre><code>##       country 1952 1977 2007
 ## 1     Namibia   42   56   53
 ## 2       Nepal   36   47   64
 ## 3 Netherlands   72   75   80</code></pre>
-<pre class="r"><code>long_form &lt;- gather(data = life_exps, key = country, value = year)
-long_form</code></pre>
-<pre><code>##       country country year
-## 1     Namibia    1952   42
-## 2       Nepal    1952   36
-## 3 Netherlands    1952   72
-## 4     Namibia    1977   56
-## 5       Nepal    1977   47
-## 6 Netherlands    1977   75
-## 7     Namibia    2007   53
-## 8       Nepal    2007   64
-## 9 Netherlands    2007   80</code></pre>
 <pre class="r"><code>gap_with_cont &lt;- 
-filter(gapminder, grepl(&quot;^N&quot;, country)) %&gt;% 
-  filter(year %in% c(1952, 1977, 2007)) %&gt;% 
-  slice(1:9) %&gt;% 
-  select(-gdpPercap, -pop) %&gt;% 
-  mutate(lifeExp = round(lifeExp))
+  filter(gapminder, grepl(&quot;^N&quot;, country)) %&gt;% 
+    filter(year %in% c(1952, 1977, 2007)) %&gt;% 
+    slice(1:9) %&gt;% 
+    select(-gdpPercap, -pop) %&gt;% 
+    mutate(lifeExp = round(lifeExp)) %&gt;%
+    spread(key = year, value = lifeExp)
 
-life_exps &lt;- spread(gap_with_cont, key = year, value = lifeExp)
-life_exps</code></pre>
+gap_with_cont</code></pre>
 <pre><code>##       country continent 1952 1977 2007
 ## 1     Namibia    Africa   42   56   53
 ## 2       Nepal      Asia   36   47   64
 ## 3 Netherlands    Europe   72   75   80</code></pre>
-<pre class="r"><code>long_form &lt;- gather(data = life_exps, key = country, value = year, 3:5)
-long_form</code></pre>
-<pre><code>##       country continent country year
-## 1     Namibia    Africa    1952   42
-## 2       Nepal      Asia    1952   36
-## 3 Netherlands    Europe    1952   72
-## 4     Namibia    Africa    1977   56
-## 5       Nepal      Asia    1977   47
-## 6 Netherlands    Europe    1977   75
-## 7     Namibia    Africa    2007   53
-## 8       Nepal      Asia    2007   64
-## 9 Netherlands    Europe    2007   80</code></pre>
-<pre class="r"><code>#long_form &lt;- gather(data = life_exps, key = country, value = year, '1952', '1977', '2007')</code></pre>
+<p>Using gather() - class demo</p>
+<pre class="r"><code>tidied_gap &lt;- gather(data = gap, key = year, value = lifeExp, -country)
+tidied_gap</code></pre>
+<pre><code>##       country year lifeExp
+## 1     Namibia 1952      42
+## 2       Nepal 1952      36
+## 3 Netherlands 1952      72
+## 4     Namibia 1977      56
+## 5       Nepal 1977      47
+## 6 Netherlands 1977      75
+## 7     Namibia 2007      53
+## 8       Nepal 2007      64
+## 9 Netherlands 2007      80</code></pre>
+<pre class="r"><code>tidied_gap_with_cont &lt;- gather(data = gap_with_cont, key = year, value = lifeExp, 3:5)
+tidied_gap_with_cont</code></pre>
+<pre><code>##       country continent year lifeExp
+## 1     Namibia    Africa 1952      42
+## 2       Nepal      Asia 1952      36
+## 3 Netherlands    Europe 1952      72
+## 4     Namibia    Africa 1977      56
+## 5       Nepal      Asia 1977      47
+## 6 Netherlands    Europe 1977      75
+## 7     Namibia    Africa 2007      53
+## 8       Nepal      Asia 2007      64
+## 9 Netherlands    Europe 2007      80</code></pre>
+<pre class="r"><code># Two ways that you can tell gather() which columns to gather.
+
+tidied_gap_with_cont &lt;- gather(data = gap_with_cont, key = year, value = lifeExp, -country, -continent)
+tidied_gap_with_cont</code></pre>
+<pre><code>##       country continent year lifeExp
+## 1     Namibia    Africa 1952      42
+## 2       Nepal      Asia 1952      36
+## 3 Netherlands    Europe 1952      72
+## 4     Namibia    Africa 1977      56
+## 5       Nepal      Asia 1977      47
+## 6 Netherlands    Europe 1977      75
+## 7     Namibia    Africa 2007      53
+## 8       Nepal      Asia 2007      64
+## 9 Netherlands    Europe 2007      80</code></pre>
+<pre class="r"><code># key is the name of the column that contains the values that were across the 
+# top of your data.frame. Value is the name of the values that populated all of 
+# the cells that you gathered.</code></pre>
+<p>Using spread() - class demo</p>
+<pre class="r"><code># Remind ourselve what the data.frame looks like
+tidied_gap</code></pre>
+<pre><code>##       country year lifeExp
+## 1     Namibia 1952      42
+## 2       Nepal 1952      36
+## 3 Netherlands 1952      72
+## 4     Namibia 1977      56
+## 5       Nepal 1977      47
+## 6 Netherlands 1977      75
+## 7     Namibia 2007      53
+## 8       Nepal 2007      64
+## 9 Netherlands 2007      80</code></pre>
+<pre class="r"><code># Let's spread the data by country.
+
+spread_gap &lt;- 
+  spread(data = tidied_gap, key = year, value = lifeExp)
+
+# Let's look at it
+spread_gap</code></pre>
+<pre><code>##       country 1952 1977 2007
+## 1     Namibia   42   56   53
+## 2       Nepal   36   47   64
+## 3 Netherlands   72   75   80</code></pre>
+<p>Exercise:</p>
 <p>Run this code to create a data frame called counts.</p>
 <pre class="r"><code>set.seed(1)
 counts &lt;- 
@@ -140,13 +183,17 @@ counts</code></pre>
 ## 4    3     A        18
 ## 5    3     B         4
 ## 6    3     C        18</code></pre>
-<p>Use spread to put counts into wide form. E.g.,</p>
+<ol style="list-style-type: decimal">
+<li>Use spread to put counts into wide form. E.g.,</li>
+</ol>
 <pre class="r"><code>counts_wide</code></pre>
 <pre><code>##   site  A  B  C
 ## 1    1  5  7 NA
 ## 2    2 11 NA NA
 ## 3    3 18  4 18</code></pre>
-<p>Use gather to return counts_wide to long form!</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Use gather to return counts_wide to long form!</li>
+</ol>
 <pre><code>##   site taxon abundance
 ## 1    1     A         5
 ## 2    2     A        11
@@ -157,6 +204,60 @@ counts</code></pre>
 ## 7    1     C        NA
 ## 8    2     C        NA
 ## 9    3     C        18</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>In this case when a species wasn’t observed at a site it was because it was never observed. Read the help file for spread to see if there is a simple way to have those NA values fill with zeroes. Then try it!</li>
+</ol>
+<hr />
+<p>What about when I want to spread data but have multiple columns that I want to retain?</p>
+<pre class="r"><code># Remind ourselves what the data.frame looks like
+tidied_gap_with_cont</code></pre>
+<pre><code>##       country continent year lifeExp
+## 1     Namibia    Africa 1952      42
+## 2       Nepal      Asia 1952      36
+## 3 Netherlands    Europe 1952      72
+## 4     Namibia    Africa 1977      56
+## 5       Nepal      Asia 1977      47
+## 6 Netherlands    Europe 1977      75
+## 7     Namibia    Africa 2007      53
+## 8       Nepal      Asia 2007      64
+## 9 Netherlands    Europe 2007      80</code></pre>
+<pre class="r"><code># Let's spread the data by year.
+
+spread_gap &lt;- 
+  spread(data = tidied_gap, key = year, value = lifeExp)
+
+# Let's look at it
+spread_gap</code></pre>
+<pre><code>##       country 1952 1977 2007
+## 1     Namibia   42   56   53
+## 2       Nepal   36   47   64
+## 3 Netherlands   72   75   80</code></pre>
+<p>What happened? We lost continent. How can we deal with this? We can use unite() and separate.</p>
+<pre class="r"><code># First let's look at what unite() does.
+
+unite(data = tidied_gap_with_cont, col = location_key, country:continent, sep = &quot;__&quot;)</code></pre>
+<pre><code>##          location_key year lifeExp
+## 1     Namibia__Africa 1952      42
+## 2         Nepal__Asia 1952      36
+## 3 Netherlands__Europe 1952      72
+## 4     Namibia__Africa 1977      56
+## 5         Nepal__Asia 1977      47
+## 6 Netherlands__Europe 1977      75
+## 7     Namibia__Africa 2007      53
+## 8         Nepal__Asia 2007      64
+## 9 Netherlands__Europe 2007      80</code></pre>
+<p>adf2 &lt;- spread(adf, taxon, density, fill=0)</p>
+<p>adf2</p>
+<p>adf3 &lt;- gather(adf2, taxon, Density, -site)</p>
+<p>adf3</p>
+<p>madf &lt;- cbind(adf, cover = round(rnorm(6), 3))</p>
+<p>madf</p>
+<p>madf2 &lt;- unite(madf, abundance, density, cover, sep=“___“)</p>
+<p>madf2</p>
+<p>madf3 &lt;- madf2 %&gt;% spread(taxon, abundance, fill=“0___0“) %&gt;% gather(taxon, abundance, -site)</p>
+<p>madf3</p>
+<p>madf4 &lt;- separate(madf3, abundance, c(“density”, “cover”), sep=“___“)</p>
+<p>madf4</p>
 
 
 </div>
