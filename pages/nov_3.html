@@ -205,56 +205,244 @@ counts</code></pre>
 <li>In this case when a species wasn’t observed at a site it was because it was never observed. Read the help file for spread to see if there is a simple way to have those NA values fill with zeroes. Then try it!</li>
 </ol>
 <hr />
-<p>What about when I want to spread data but have multiple columns that I want to retain?</p>
-<pre class="r"><code># Remind ourselves what the data.frame looks like
-tidied_gap_with_cont</code></pre>
-<pre><code>##       country continent year lifeExp
-## 1     Namibia    Africa 1952      42
-## 2       Nepal      Asia 1952      36
-## 3 Netherlands    Europe 1952      72
-## 4     Namibia    Africa 1977      56
-## 5       Nepal      Asia 1977      47
-## 6 Netherlands    Europe 1977      75
-## 7     Namibia    Africa 2007      53
-## 8       Nepal      Asia 2007      64
-## 9 Netherlands    Europe 2007      80</code></pre>
-<pre class="r"><code># Let's spread the data by year.
+</div>
+<div id="reshaping-data-continued" class="section level3">
+<h3>Reshaping data continued</h3>
+<p>Run this code to create the data frame we will be working with today.</p>
+<pre class="r"><code>mammals &lt;- data.frame(site = c(1,1,2,3,3,3), 
+                      taxon = c('Suncus etruscus', 'Sorex cinereus', 
+                                'Myotis nigricans', 'Notiosorex crawfordi', 
+                                'Scuncus etruscus', 'Myotis nigricans'),
+                      density = c(6.2, 5.2, 11.0, 1.2, 9.4, 9.6)
+)</code></pre>
+<div id="morning-warm-up" class="section level4">
+<h4>Morning warm-up!</h4>
+<ol style="list-style-type: decimal">
+<li>Last week Tom and Jerry went out to do some small mammal counts at three sites. However, they didn’t record species of interest that they did not observe at a site. But now they want to see ALL species they counted across sites associated with each site. Use your powers of tidyr to help them get there.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><code>mammals</code> is the raw data that they collected. Re-write mammals to a new dataframe called <code>mam_wide</code> which puts the taxa across the top (wide-format), with NA values replaced with 0. You should get something that looks like this. (tell me in the etherpad when you’re done!)</li>
+</ol>
+<pre><code>##   site Myotis nigricans Notiosorex crawfordi Scuncus etruscus
+## 1    1              0.0                  0.0              0.0
+## 2    2             11.0                  0.0              0.0
+## 3    3              9.6                  1.2              9.4
+##   Sorex cinereus Suncus etruscus
+## 1            5.2             6.2
+## 2            0.0             0.0
+## 3            0.0             0.0</code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Convert back to long-format</li>
+</ol>
+<pre><code>##    site                taxon density
+## 1     1     Myotis nigricans     0.0
+## 2     2     Myotis nigricans    11.0
+## 3     3     Myotis nigricans     9.6
+## 4     1 Notiosorex crawfordi     0.0
+## 5     2 Notiosorex crawfordi     0.0
+## 6     3 Notiosorex crawfordi     1.2
+## 7     1     Scuncus etruscus     0.0
+## 8     2     Scuncus etruscus     0.0
+## 9     3     Scuncus etruscus     9.4
+## 10    1       Sorex cinereus     5.2
+## 11    2       Sorex cinereus     0.0
+## 12    3       Sorex cinereus     0.0
+## 13    1      Suncus etruscus     6.2
+## 14    2      Suncus etruscus     0.0
+## 15    3      Suncus etruscus     0.0</code></pre>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Now Tom and Jerry want to make some plots with groupings by genus. Help them get their data setup so they can do this. (if you need a hint ask in the etherpad)</li>
+</ol>
+<div id="putting-it-all-together" class="section level6">
+<h6>Putting it all together</h6>
+<p>Sometimes you may need your data in wide format (or go from wide to long to fill in with zeros as we just did in the warm-up), but you have multiple columns of values. We are going to update <code>mammals</code> to include an extra column called counts. Try putting this into wide format, like you did in 1a above.</p>
+<pre class="r"><code># Let's add a column to mammals that has the actual species counts 
+set.seed(100)
+mammals$counts &lt;- round(runif(n = 6, min = 0, max = 100))
+mammals</code></pre>
+<pre><code>##   site                taxon density counts
+## 1    1      Suncus etruscus     6.2     31
+## 2    1       Sorex cinereus     5.2     26
+## 3    2     Myotis nigricans    11.0     55
+## 4    3 Notiosorex crawfordi     1.2      6
+## 5    3     Scuncus etruscus     9.4     47
+## 6    3     Myotis nigricans     9.6     48</code></pre>
+<pre class="r"><code>spread(mammals, key = taxon, value = density, counts)
+spread(mammals, key = taxon, value = c(density, counts))</code></pre>
+<p>So R doesn’t like that we’re trying to spread the data using multiple columns, and that makes sense. How would you even do this by hand? You couldn’t, you’d have to do it in two separate tables like so:</p>
+<pre class="r"><code># One for density
+select(mammals, site, taxon, density) %&gt;%
+  spread(key = taxon, value = density, fill = 0)</code></pre>
+<pre><code>##   site Myotis nigricans Notiosorex crawfordi Scuncus etruscus
+## 1    1              0.0                  0.0              0.0
+## 2    2             11.0                  0.0              0.0
+## 3    3              9.6                  1.2              9.4
+##   Sorex cinereus Suncus etruscus
+## 1            5.2             6.2
+## 2            0.0             0.0
+## 3            0.0             0.0</code></pre>
+<pre class="r"><code># One for counts
+select(mammals, site, taxon, counts) %&gt;%
+  spread(key = taxon, value = counts, fill = 0)</code></pre>
+<pre><code>##   site Myotis nigricans Notiosorex crawfordi Scuncus etruscus
+## 1    1                0                    0                0
+## 2    2               55                    0                0
+## 3    3               48                    6               47
+##   Sorex cinereus Suncus etruscus
+## 1             26              31
+## 2              0               0
+## 3              0               0</code></pre>
+<p>Is there another way we can do this? This is potentially a lot of repetition.</p>
+<pre class="r"><code>united_vals &lt;- unite(data = mammals, col = density_counts, density, counts, 
+                     sep = &quot;__&quot;)
+united_vals</code></pre>
+<pre><code>##   site                taxon density_counts
+## 1    1      Suncus etruscus        6.2__31
+## 2    1       Sorex cinereus        5.2__26
+## 3    2     Myotis nigricans         11__55
+## 4    3 Notiosorex crawfordi         1.2__6
+## 5    3     Scuncus etruscus        9.4__47
+## 6    3     Myotis nigricans        9.6__48</code></pre>
+<p>Now we can continue with our spread.</p>
+<pre class="r"><code># Notice that we have to be slightly clever with how we fill... How did I 
+# figure out that we need to use '0__0'?? I went through it all with just 
+# fill = 0 and R got mad at me because you cannot separate single values 
+# (e.g., 0). So I went back and changed this.
+spread(united_vals, key = taxon, value = density_counts, fill = '0__0')</code></pre>
+<pre><code>##   site Myotis nigricans Notiosorex crawfordi Scuncus etruscus
+## 1    1             0__0                 0__0             0__0
+## 2    2           11__55                 0__0             0__0
+## 3    3          9.6__48               1.2__6          9.4__47
+##   Sorex cinereus Suncus etruscus
+## 1        5.2__26         6.2__31
+## 2           0__0            0__0
+## 3           0__0            0__0</code></pre>
+<p>And let’s go back to long format.</p>
+<pre class="r"><code>spread(united_vals, key = taxon, value = density_counts, fill = '0__0') %&gt;%
+  gather(key = taxon, value = density_counts, -site)</code></pre>
+<pre><code>##    site                taxon density_counts
+## 1     1     Myotis nigricans           0__0
+## 2     2     Myotis nigricans         11__55
+## 3     3     Myotis nigricans        9.6__48
+## 4     1 Notiosorex crawfordi           0__0
+## 5     2 Notiosorex crawfordi           0__0
+## 6     3 Notiosorex crawfordi         1.2__6
+## 7     1     Scuncus etruscus           0__0
+## 8     2     Scuncus etruscus           0__0
+## 9     3     Scuncus etruscus        9.4__47
+## 10    1       Sorex cinereus        5.2__26
+## 11    2       Sorex cinereus           0__0
+## 12    3       Sorex cinereus           0__0
+## 13    1      Suncus etruscus        6.2__31
+## 14    2      Suncus etruscus           0__0
+## 15    3      Suncus etruscus           0__0</code></pre>
+<p>Then let’s add one more layer so that we can go back to having density and count columns!</p>
+<pre class="r"><code>spread(united_vals, key = taxon, value = density_counts, fill = '0__0') %&gt;%
+  gather(key = taxon, value = density_counts, -site) %&gt;%
+  separate(col = density_counts, into = c('density', 'counts'), sep = '__')</code></pre>
+<pre><code>##    site                taxon density counts
+## 1     1     Myotis nigricans       0      0
+## 2     2     Myotis nigricans      11     55
+## 3     3     Myotis nigricans     9.6     48
+## 4     1 Notiosorex crawfordi       0      0
+## 5     2 Notiosorex crawfordi       0      0
+## 6     3 Notiosorex crawfordi     1.2      6
+## 7     1     Scuncus etruscus       0      0
+## 8     2     Scuncus etruscus       0      0
+## 9     3     Scuncus etruscus     9.4     47
+## 10    1       Sorex cinereus     5.2     26
+## 11    2       Sorex cinereus       0      0
+## 12    3       Sorex cinereus       0      0
+## 13    1      Suncus etruscus     6.2     31
+## 14    2      Suncus etruscus       0      0
+## 15    3      Suncus etruscus       0      0</code></pre>
+</div>
+<div id="optional-exercise" class="section level6">
+<h6>Optional exercise:</h6>
+<p>Tidy the data in the data.frame below. For reference, the column names are in the format Site_Year.</p>
+<pre class="r"><code>set.seed(7)
+whale_counts &lt;- data.frame(whale = c('Badger', 'Bamboo', 'Humphrey', 'Kumiko', 
+                           'Ester', 'Moby Dick'), 
+                           A_2009 = round(runif(n = 6, min = 0, max = 20), 0), 
+                           A_2010 = round(runif(n = 6, min = 0, max = 20), 0),
+                           A_2011 = round(runif(n = 6, min = 0, max = 20), 0),
+                           B_2009 = round(runif(n = 6, min = 0, max = 20), 0),
+                           B_2010 = round(runif(n = 6, min = 0, max = 20), 0),
+                           B_2011 = round(runif(n = 6, min = 0, max = 20), 0)
+  )
 
-spread_gap &lt;- 
-  spread(data = tidied_gap, key = year, value = lifeExp)
+whale_counts</code></pre>
+<pre><code>##       whale A_2009 A_2010 A_2011 B_2009 B_2010 B_2011
+## 1    Badger     20      7     15     20     20     14
+## 2    Bamboo      8     19      2      6      1      5
+## 3  Humphrey      2      3      9     13     13      4
+## 4    Kumiko      1      9      2      6     10      4
+## 5     Ester      5      3     11     20     19      8
+## 6 Moby Dick     16      5      0     18      7     17</code></pre>
+<hr />
+<p>Data mashups!</p>
+<p>You are often going to collect some data that you then want to join up data from multiple tables/data.frames.</p>
+<p>We’re going to go back to using our mammals data.</p>
+<pre class="r"><code>mammals</code></pre>
+<pre><code>##   site                taxon density counts
+## 1    1      Suncus etruscus     6.2     31
+## 2    1       Sorex cinereus     5.2     26
+## 3    2     Myotis nigricans    11.0     55
+## 4    3 Notiosorex crawfordi     1.2      6
+## 5    3     Scuncus etruscus     9.4     47
+## 6    3     Myotis nigricans     9.6     48</code></pre>
+<p>We also now have another data table that contains additional information about each of the our species. How can we go about matching these data up?</p>
+<pre class="r"><code># Lookup table for joins. Small mammal metabolic data.
+#sci_name &lt;- c('Suncus etruscus', 'Sorex cinereus', 'Myotis nigricans' ,'Notiosorex crawfordi')
+genus &lt;- c('Suncus', 'Sorex', 'Myotis' ,'Notiosorex')
+species &lt;- c('etruscus', 'cinereus', 'nigricans', 'crawfordi')
+order &lt;- c('Soricomorpha', 'Soricomorpha', 'Chiroptera', 'Soricomorpha')
+family_common &lt;- c('Shrews', 'Shrews', 'Vesper Bats', 'Shrews')
+body_temp &lt;- c(38.7, 38.7, 99999, 37.6)
+body_mass &lt;- c(2.4, 3.5, 3.7, 4)
+basal_metabolism &lt;- c(0.08, 0.176, 0.27, 0.074)
 
-# Let's look at it
-spread_gap</code></pre>
-<pre><code>##       country 1952 1977 2007
-## 1     Namibia   42   56   53
-## 2       Nepal   36   47   64
-## 3 Netherlands   72   75   80</code></pre>
-<p>What happened? We lost continent. How can we deal with this? We can use unite() and separate.</p>
-<pre class="r"><code># First let's look at what unite() does.
+metabolic &lt;- data.frame(genus = genus, species = species, order = order, 
+                        family_common = family_common, body_temp = body_temp, 
+                        body_mass = body_mass, 
+                        basal_metabolism = basal_metabolism)
 
-unite(data = tidied_gap_with_cont, col = location_key, country:continent, sep = &quot;__&quot;)</code></pre>
-<pre><code>##          location_key year lifeExp
-## 1     Namibia__Africa 1952      42
-## 2         Nepal__Asia 1952      36
-## 3 Netherlands__Europe 1952      72
-## 4     Namibia__Africa 1977      56
-## 5         Nepal__Asia 1977      47
-## 6 Netherlands__Europe 1977      75
-## 7     Namibia__Africa 2007      53
-## 8         Nepal__Asia 2007      64
-## 9 Netherlands__Europe 2007      80</code></pre>
-<p>adf2 &lt;- spread(adf, taxon, density, fill=0)</p>
-<p>adf2</p>
-<p>adf3 &lt;- gather(adf2, taxon, Density, -site)</p>
-<p>adf3</p>
-<p>madf &lt;- cbind(adf, cover = round(rnorm(6), 3))</p>
-<p>madf</p>
-<p>madf2 &lt;- unite(madf, abundance, density, cover, sep=“___“)</p>
-<p>madf2</p>
-<p>madf3 &lt;- madf2 %&gt;% spread(taxon, abundance, fill=“0___0“) %&gt;% gather(taxon, abundance, -site)</p>
-<p>madf3</p>
-<p>madf4 &lt;- separate(madf3, abundance, c(“density”, “cover”), sep=“___“)</p>
-<p>madf4</p>
+metabolic</code></pre>
+<pre><code>##        genus   species        order family_common body_temp body_mass
+## 1     Suncus  etruscus Soricomorpha        Shrews      38.7       2.4
+## 2      Sorex  cinereus Soricomorpha        Shrews      38.7       3.5
+## 3     Myotis nigricans   Chiroptera   Vesper Bats   99999.0       3.7
+## 4 Notiosorex crawfordi Soricomorpha        Shrews      37.6       4.0
+##   basal_metabolism
+## 1            0.080
+## 2            0.176
+## 3            0.270
+## 4            0.074</code></pre>
+<ul>
+<li><p>Talk about unique keys.</p></li>
+<li><p>Make unique key for lookup!</p></li>
+<li><p>Joining A with B</p></li>
+<li><p>left_join (matches B onto A)</p></li>
+<li><p>right_join (matches A onto B)</p></li>
+<li><p>inner_join (retain only matching values in A and B)</p></li>
+<li><p>full_join (retain all values in all rows)</p></li>
+<li><p>anti_join (get all rows in A, not found in B)</p></li>
+<li><p>One to many</p></li>
+</ul>
+<p>Code for one-to-many join example.</p>
+<pre class="r"><code>site_number &lt;- c(1, 1, 1, 2, 2, 2, 3, 3, 3)
+site &lt;- c('North Saanich', 'North Saanich', 'North Saanich', 'Salt Spring Island', 'Salt Spring Island', 'Salt Spring Island', 'Victoria', 'Victoria', 'Victoria')
+sub_site &lt;- c('Chez Jillian', 'Horth Hill', 'Iroquois Park', 'Mt. Tuam', 'Ruckle Park', 'Mt. Maxwell', 'Mt. Doug', 'Uvic', 'Uplands')
+lat &lt;- c(48.669207, 48.686775, 48.643806, 48.735256, 48.785117, 48.797760, 
+         48.487006, 48.461353, 48.441668) 
+lon &lt;- c(-123.468452, -123.434806, -123.403392, -123.458152, -123.388680, -123.506763, -123.352139, -123.309311, -123.301797)
+
+site_data &lt;- data.frame(site_number = site_number, site = site, 
+                        sub_site = sub_site, lat = lat, lon = lon)</code></pre>
+<hr />
+<p>Create your starting dataframe</p>
+</div>
+</div>
 </div>
 
 
