@@ -1,0 +1,110 @@
+#### Setup
+
+* Checkout the etherpad for today [https://etherpad.wikimedia.org/p/cIVbE45bGm](https://etherpad.wikimedia.org/p/cIVbE45bGm)  
+
+* Install/load the following packages:
+
+```{r, message = FALSE, warning = FALSE}
+library(tidyr)
+library(dplyr)
+```
+
+Slides from today
+
+* [data_mashups.pptx](data_mashups.pptx)
+
+Download the following datasets:
+
+1. [mammal_count_data.csv](datasets/mammal_count_data.csv)
+
+2. [mammal_site_data.csv](datasets/mammal_fake_site_data.csv)
+
+3. [mammal_physiology_data.csv](mammal_physiology_data.csv)
+
+
+Time to read these data files into R.
+
+```{r, eval = FALSE}
+# We'll have to make some tweaks here. 
+counts <- read.csv('datasets/mammal_count_data.csv')
+sites  <- read.csv('datasets/mammal_site_data.csv')
+phys   <- read.csv('datasets/mammal_physiology_data.csv')
+```
+
+Post reading data warm-up option 1:
+
+* Let's pretend that small mammals are counted in quadrats like plants. Use dplyr to calculate a new column that contains the density of small mammals given that our quadrat size was 2 x 2 m. 
+
+```{r, echo = FALSE, eval = FALSE}
+mutate(counts, density = mean_abundance / 4)
+```
+
+Post reading data warm-up option 2:
+
+* Using tidyr, expand our dataframe to include all species counts (i.e., zero if a species wasn't observed) at a site. 
+
+
+--------------------------------------------------------------------------------
+
+### Data mashups!
+
+You are often going to collect some data that you then want to join up data from multiple tables/data.frames. 
+
+
+* Talk about unique keys.  
+
+* Make unique key for lookup!
+
+* Joining A with B
+
+- left_join (matches B onto A)
+
+- right_join (matches A onto B)
+
+- inner_join (retain only matching values in A and B) 
+
+- full_join (retain all values in all rows)
+
+- anti_join (filtering join, no actual joining - get all rows in A, not found in B)
+
+* Concept of one to many
+
+
+```{r, echo = FALSE, eval = FALSE}
+
+# Creating the data files for the data mashups class
+mammals <- read.csv('intro_to_computing_assignments/Mammal physiology data.csv')
+
+mammals <- select(mammals, order, Family, family.common.name, Genus, Species, Body.Temperature....C., Body.Mass..g., Basal.Metabolic.Rate..W., Air.temperature..C)
+
+mammals_sub <- head(mammals, n = 15)
+write.csv(mammals_sub, 'intro_to_computing_assignments/mammal_physiology_data.csv')
+
+# Count data
+spp <- unite(mammals_sub, col = sci_name, Genus, Species, sep = ' ')$sci_name
+site <- sample(c(1, 2, 3), 30, replace = TRUE)
+
+taxon1 <- sample(spp, size = sum(site == 1), replace = FALSE)
+taxon2 <- sample(spp, size = sum(site == 2), replace = FALSE)
+taxon3 <- sample(spp, size = sum(site == 3), replace = FALSE)
+
+count_data <- data.frame(site = sort(site), taxon = c(taxon1, taxon2, taxon3),
+                         abundance = round(runif(n = 6, min = 0, max = 20), 0)
+)
+
+write.csv(count_data, 'intro_to_computing_assignments/mammal_count_data.csv')
+
+# Site data creation
+site_number <- c(1, 1, 1, 2, 2, 2, 3, 3, 3)
+site <- c('North Saanich', 'North Saanich', 'North Saanich', 'Salt Spring Island', 'Salt Spring Island', 'Salt Spring Island', 'Victoria', 'Victoria', 'Victoria')
+sub_site <- c('Chez Jillian', 'Horth Hill', 'Iroquois Park', 'Mt. Tuam', 'Ruckle Park', 'Mt. Maxwell', 'Mt. Doug', 'Uvic', 'Uplands')
+lat <- c(48.669207, 48.686775, 48.643806, 48.735256, 48.785117, 48.797760, 
+         48.487006, 48.461353, 48.441668) 
+lon <- c(-123.468452, -123.434806, -123.403392, -123.458152, -123.388680, -123.506763, -123.352139, -123.309311, -123.301797)
+
+site_data <- data.frame(site_number = site_number, site = site, 
+                        sub_site = sub_site, lat = lat, lon = lon)
+
+write.csv(site_data, 'intro_to_computing_assignments/mammal_fake_site_data.csv')
+
+```

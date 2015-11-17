@@ -5,7 +5,9 @@ tagline: An introductory class
 description: Minimal tutorial on making a simple website with GitHub Pages
 ---
 
-### News - November 10, 2015
+### News - November 17, 2015
+
+[Data mashups](pages/data_mashups.html)
 
 [Tidy Data Code](pages/nov_3.html)
 
