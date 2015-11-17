@@ -19,13 +19,13 @@ Download the following datasets:
 
 2. [mammal_site_data.csv](datasets/mammal_fake_site_data.csv)
 
-3. [mammal_physiology_data.csv](mammal_physiology_data.csv)
+3. [mammal_physiology_data.csv](datasets/mammal_physiology_data.csv)
 
 
 Time to read these data files into R.
 
 ```{r, eval = FALSE}
-# We'll have to make some tweaks here. 
+# We'll have to make several tweaks here. 
 counts <- read.csv('datasets/mammal_count_data.csv')
 sites  <- read.csv('datasets/mammal_site_data.csv')
 phys   <- read.csv('datasets/mammal_physiology_data.csv')
