@@ -15,6 +15,9 @@ install.packages('stringr')
 ```{r}
 library(lubridate)
 library(stringr)
+
+# Note:
+# See ?strptime() for more on dates and times
 ```
 
 
@@ -53,55 +56,112 @@ Slides for today:
 
 --------------------------------------------------------------------------------
 
-This is a hodge podge for now. Will update asap. The setup is the most important part. 
+### Date parsing
 
-String manipulation in R
+Dates and \'datetimes\' can cause a lot of hassle for something seemingly simple. 
 
-What do I want to cover today?
+```{r}
+library(lubridate)
 
-as.Date
-- different date formats
-- POSIX; origin
-- ISO 8601 - Representation of dates and times
-- today
-- now
+# Let's look at some date/datetime objects.
+# Side note, you'll notice the use of the ::, this is a way to be explicit about
+# the package from which you are calling a function. You may have noticed this 
+# already in the data wrangling cheatsheet.
 
-lubridate
-- makes your life a hundred times easier
+# A quote from Hadley's R packages book: "The best practice is to explicitly 
+# refer to external functions using the syntax package::function(). This makes 
+# it very easy to identify which functions live outside of your package. This 
+# is especially useful when you read your code in the future." 
+# http://r-pkgs.had.co.nz/description.html
 
-- dates
-- what is a date object?
-- using lubridate
-- converting dates from weird string formats
-- how should you do your dates???
-I say year - month - day
+# I use it now to make it clear for you that now() is NOT a base R function. 
+# I will also mention that this is how you can specify functions that have been 
+# 'masked' by libraries that you load (e.g., the dplyr start up messages that 
+# you see when you load dplyr).
 
+lubridate::now()
+
+lubridate::today()
+
+today() # can be combined with paste() to timestamp exported files 
+# This let's you keep track of a most recent file output!
+
+
+str(today())
+```
+
+Time to play with dates of different formats
+
+```{r}
+
+date1 <- '20010102'
+date2 <- '2001.01.02'
+date3 <- '2001/01/02'
+date4 <- '2001-01-02'
+# Let's mix it up
+date5 <- '2001..01/02'
+
+# If we look at the structure it is a string/character
+str(date1)
+
+as.Date(x = date1, format = '%Y%m%d')
+
+
+# POSIX awareness moment
+as.numeric(today())
+
+posix_time <- as.numeric(today())
+
+posix_time
+
+
+lubridate::origin
+
+as.Date(posix_time, origin = '1970-01-01')
+as.Date(posix_time, origin = origin)
+
+
+
+# Lubridate magic!
+date_strings <- c('20010102', '2001.01.02', '2001..01..02', '2001_01_02', 
+       '01/01/02', '2001, January, 2', '2001,_January, 2')
+
+date_dates <- lubridate::ymd(date_strings)
+
+year(date_dates)
+month(date_dates)
+month(date_dates, label = TRUE)
+month(date_dates, label = TRUE, abbr = FALSE)
+day(date_dates)
+
+```
+
+
+### String manipulation in R
 
 What are regular expressions??
 
 - a language for pattern matching in strings
-- it's a way for you to do really, really string matching - find and/or replace
 
+- it's a way for you to do really, really specific string matching - find and/or replace
 
+* literals + metacharacters
 
-literals + metacharacters
+* literals
 
-literals
 - exactly what they are
 
-metacharacters
+* metacharacters
+
 - things that change how you interpret the literals (these characters do something other than what they are)
 
-e.g., 
-?, *, [], ^, \$, (), \
+* e.g: ?, *, [], ^, \$, (), \\ , .
 
-. 
-
-grep - find a pattern in a character vector
+* grep - find a pattern in a character vector
 
 
 ```{r}
-
+# Let's make a Mickey Mouse string
 mms <- c('M. Mouse', 'm. mouse', 'Mickey Mouse', 'mick. mouse')
 
 grep(pattern = 'Mouse', x = mms)
@@ -110,13 +170,14 @@ grep(pattern = 'Mouse', x = mms, value = TRUE)
 grep(pattern = 'Mouse', x = mms, value = FALSE, ignore.case = TRUE)
 grep(pattern = 'Mouse', x = mms, value = TRUE, ignore.case = TRUE)
 
+# Using gsub to make replacements
+gsub(pattern = 'Mickey', replacement = 'Minnie', x = mms)
 
-
+# Or if we want to find more than one thing, we can use the OR operator '|'
+gsub(pattern = 'Mickey|mick', replacement = 'Minnie', x = mms)
 
 
 # Introduction to regular expressions
-
-
 
 
 
@@ -170,35 +231,6 @@ gsub - find and replace
     - answer: it [depends](http://www.regular-expressions.info/refflavors.html)!
 
 
-Date parsing
-- parsing --> reading strings
-
-
-### Useful time functions in R and the POSIXlt gotcha
-```{r}
-now()
-
-today() # really handy for creating time stamps
-
-as.numeric(today())
-
-posix_time <- as.numeric(today())
-
-posix_time
-
-
-origin
-
-as.Date(posix_time, origin = '1970-01-01')
-as.Date(posix_time, origin = origin)
-
-x <- c('20010101', '2001.01.01', '2001..01..01', '2001_01_01', 
-       '01/01/01', '2001, January, 1', '2001,_January, 1')
-ymd(x)
-
-test <- as.Date('2015-11-19', '%Y-%m-%d')
-
-```
 
 regex101
 
@@ -232,6 +264,8 @@ write.csv(ts, 'TSforCIEE_latlong.csv')
 
 example string:
 
+
+c('Barnstable County', 'Berkshire County', 'Bristol County', 'Dukes County', 'Essex County')
 
 
 

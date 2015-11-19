@@ -74,7 +74,10 @@ img {
 <pre class="r"><code>install.packages('lubridate')
 install.packages('stringr')</code></pre>
 <pre class="r"><code>library(lubridate)
-library(stringr)</code></pre>
+library(stringr)
+
+# Note:
+# See ?strptime() for more on dates and times</code></pre>
 </div>
 <div id="websites-that-will-be-helpful-today" class="section level3">
 <h3>Websites that will be helpful today:</h3>
@@ -103,29 +106,100 @@ POLAR_BASIN_DRIFTING_STATION_SEVERNYI_POLUS_2_Nansen_closing_net_333_um_mesh_346
 <li>on their way</li>
 </ul>
 <hr />
-<p>This is a hodge podge for now. Will update asap. The setup is the most important part.</p>
-<p>String manipulation in R</p>
-<p>What do I want to cover today?</p>
-<p>as.Date - different date formats - POSIX; origin - ISO 8601 - Representation of dates and times - today - now</p>
-<p>lubridate - makes your life a hundred times easier</p>
-<ul>
-<li>dates</li>
-<li>what is a date object?</li>
-<li>using lubridate</li>
-<li>converting dates from weird string formats</li>
-<li>how should you do your dates??? I say year - month - day</li>
-</ul>
+</div>
+<div id="date-parsing" class="section level3">
+<h3>Date parsing</h3>
+<p>Dates and 'datetimes' can cause a lot of hassle for something seemingly simple.</p>
+<pre class="r"><code>library(lubridate)
+
+# Let's look at some date/datetime objects.
+# Side note, you'll notice the use of the ::, this is a way to be explicit about
+# the package from which you are calling a function. You may have noticed this 
+# already in the data wrangling cheatsheet.
+
+# A quote from Hadley's R packages book: &quot;The best practice is to explicitly 
+# refer to external functions using the syntax package::function(). This makes 
+# it very easy to identify which functions live outside of your package. This 
+# is especially useful when you read your code in the future.&quot; 
+# http://r-pkgs.had.co.nz/description.html
+
+# I use it now to make it clear for you that now() is NOT a base R function. 
+# I will also mention that this is how you can specify functions that have been 
+# 'masked' by libraries that you load (e.g., the dplyr start up messages that 
+# you see when you load dplyr).
+
+lubridate::now()</code></pre>
+<pre><code>## [1] &quot;2015-11-19 09:20:49 EST&quot;</code></pre>
+<pre class="r"><code>lubridate::today()</code></pre>
+<pre><code>## [1] &quot;2015-11-19&quot;</code></pre>
+<pre class="r"><code>today() # can be combined with paste() to timestamp exported files </code></pre>
+<pre><code>## [1] &quot;2015-11-19&quot;</code></pre>
+<pre class="r"><code># This let's you keep track of a most recent file output!
+
+
+str(today())</code></pre>
+<pre><code>##  Date[1:1], format: &quot;2015-11-19&quot;</code></pre>
+<p>Time to play with dates of different formats</p>
+<pre class="r"><code>date1 &lt;- '20010102'
+date2 &lt;- '2001.01.02'
+date3 &lt;- '2001/01/02'
+date4 &lt;- '2001-01-02'
+# Let's mix it up
+date5 &lt;- '2001..01/02'
+
+# If we look at the structure it is a string/character
+str(date1)</code></pre>
+<pre><code>##  chr &quot;20010102&quot;</code></pre>
+<pre class="r"><code>as.Date(x = date1, format = '%Y%m%d')</code></pre>
+<pre><code>## [1] &quot;2001-01-02&quot;</code></pre>
+<pre class="r"><code># POSIX awareness moment
+as.numeric(today())</code></pre>
+<pre><code>## [1] 16758</code></pre>
+<pre class="r"><code>posix_time &lt;- as.numeric(today())
+
+posix_time</code></pre>
+<pre><code>## [1] 16758</code></pre>
+<pre class="r"><code>lubridate::origin</code></pre>
+<pre><code>## [1] &quot;1970-01-01 UTC&quot;</code></pre>
+<pre class="r"><code>as.Date(posix_time, origin = '1970-01-01')</code></pre>
+<pre><code>## [1] &quot;2015-11-19&quot;</code></pre>
+<pre class="r"><code>as.Date(posix_time, origin = origin)</code></pre>
+<pre><code>## [1] &quot;2015-11-19&quot;</code></pre>
+<pre class="r"><code># Lubridate magic!
+date_strings &lt;- c('20010102', '2001.01.02', '2001..01..02', '2001_01_02', 
+       '01/01/02', '2001, January, 2', '2001,_January, 2')
+
+date_dates &lt;- lubridate::ymd(date_strings)
+
+year(date_dates)</code></pre>
+<pre><code>## [1] 2001 2001 2001 2001 2001 2001 2001</code></pre>
+<pre class="r"><code>month(date_dates)</code></pre>
+<pre><code>## [1] 1 1 1 1 1 1 1</code></pre>
+<pre class="r"><code>month(date_dates, label = TRUE)</code></pre>
+<pre><code>## [1] Jan Jan Jan Jan Jan Jan Jan
+## 12 Levels: Jan &lt; Feb &lt; Mar &lt; Apr &lt; May &lt; Jun &lt; Jul &lt; Aug &lt; Sep &lt; ... &lt; Dec</code></pre>
+<pre class="r"><code>month(date_dates, label = TRUE, abbr = FALSE)</code></pre>
+<pre><code>## [1] January January January January January January January
+## 12 Levels: January &lt; February &lt; March &lt; April &lt; May &lt; June &lt; ... &lt; December</code></pre>
+<pre class="r"><code>day(date_dates)</code></pre>
+<pre><code>## [1] 2 2 2 2 2 2 2</code></pre>
+</div>
+<div id="string-manipulation-in-r" class="section level3">
+<h3>String manipulation in R</h3>
 <p>What are regular expressions??</p>
 <ul>
-<li>a language for pattern matching in strings</li>
-<li>it’s a way for you to do really, really string matching - find and/or replace</li>
+<li><p>a language for pattern matching in strings</p></li>
+<li><p>it’s a way for you to do really, really specific string matching - find and/or replace</p></li>
+<li><p>literals + metacharacters</p></li>
+<li><p>literals</p></li>
+<li><p>exactly what they are</p></li>
+<li><p>metacharacters</p></li>
+<li><p>things that change how you interpret the literals (these characters do something other than what they are)</p></li>
+<li><p>e.g: ?, *, [], ^, $, (), \ , .</p></li>
+<li><p>grep - find a pattern in a character vector</p></li>
 </ul>
-<p>literals + metacharacters</p>
-<p>literals - exactly what they are</p>
-<p>metacharacters - things that change how you interpret the literals (these characters do something other than what they are)</p>
-<p>e.g., ?, *, [], ^, $, (),<br /> .</p>
-<p>grep - find a pattern in a character vector</p>
-<pre class="r"><code>mms &lt;- c('M. Mouse', 'm. mouse', 'Mickey Mouse', 'mick. mouse')
+<pre class="r"><code># Let's make a Mickey Mouse string
+mms &lt;- c('M. Mouse', 'm. mouse', 'Mickey Mouse', 'mick. mouse')
 
 grep(pattern = 'Mouse', x = mms)</code></pre>
 <pre><code>## [1] 1 3</code></pre>
@@ -135,9 +209,13 @@ grep(pattern = 'Mouse', x = mms)</code></pre>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <pre class="r"><code>grep(pattern = 'Mouse', x = mms, value = TRUE, ignore.case = TRUE)</code></pre>
 <pre><code>## [1] &quot;M. Mouse&quot;     &quot;m. mouse&quot;     &quot;Mickey Mouse&quot; &quot;mick. mouse&quot;</code></pre>
+<pre class="r"><code># Using gsub to make replacements
+gsub(pattern = 'Mickey', replacement = 'Minnie', x = mms)</code></pre>
+<pre><code>## [1] &quot;M. Mouse&quot;     &quot;m. mouse&quot;     &quot;Minnie Mouse&quot; &quot;mick. mouse&quot;</code></pre>
+<pre class="r"><code># Or if we want to find more than one thing, we can use the OR operator '|'
+gsub(pattern = 'Mickey|mick', replacement = 'Minnie', x = mms)</code></pre>
+<pre><code>## [1] &quot;M. Mouse&quot;      &quot;m. mouse&quot;      &quot;Minnie Mouse&quot;  &quot;Minnie. mouse&quot;</code></pre>
 <pre class="r"><code># Introduction to regular expressions
-
-
 
 
 
@@ -202,31 +280,6 @@ grep(pattern = 'Mouse', x = mms)</code></pre>
 </ul></li>
 </ul>
 </blockquote>
-<p>Date parsing - parsing –&gt; reading strings</p>
-<div id="useful-time-functions-in-r-and-the-posixlt-gotcha" class="section level3">
-<h3>Useful time functions in R and the POSIXlt gotcha</h3>
-<pre class="r"><code>now()</code></pre>
-<pre><code>## [1] &quot;2015-11-19 01:35:11 EST&quot;</code></pre>
-<pre class="r"><code>today() # really handy for creating time stamps</code></pre>
-<pre><code>## [1] &quot;2015-11-19&quot;</code></pre>
-<pre class="r"><code>as.numeric(today())</code></pre>
-<pre><code>## [1] 16758</code></pre>
-<pre class="r"><code>posix_time &lt;- as.numeric(today())
-
-posix_time</code></pre>
-<pre><code>## [1] 16758</code></pre>
-<pre class="r"><code>origin</code></pre>
-<pre><code>## [1] &quot;1970-01-01 UTC&quot;</code></pre>
-<pre class="r"><code>as.Date(posix_time, origin = '1970-01-01')</code></pre>
-<pre><code>## [1] &quot;2015-11-19&quot;</code></pre>
-<pre class="r"><code>as.Date(posix_time, origin = origin)</code></pre>
-<pre><code>## [1] &quot;2015-11-19&quot;</code></pre>
-<pre class="r"><code>x &lt;- c('20010101', '2001.01.01', '2001..01..01', '2001_01_01', 
-       '01/01/01', '2001, January, 1', '2001,_January, 1')
-ymd(x)</code></pre>
-<pre><code>## [1] &quot;2001-01-01 UTC&quot; &quot;2001-01-01 UTC&quot; &quot;2001-01-01 UTC&quot; &quot;2001-01-01 UTC&quot;
-## [5] &quot;2001-01-01 UTC&quot; &quot;2001-01-01 UTC&quot; &quot;2001-01-01 UTC&quot;</code></pre>
-<pre class="r"><code>test &lt;- as.Date('2015-11-19', '%Y-%m-%d')</code></pre>
 <p>regex101</p>
 <p>Citations <span class="math">\([^(MPAs)].*\)</span></p>
 <p>challenge strings (-?._-?.)</p>
@@ -237,6 +290,7 @@ ymd(x)</code></pre>
 <p>ts<span class="math">\(Lat &lt;- lat_long[, 1] ts\)</span>Lon &lt;- lat_long[, 2]</p>
 <p>write.csv(ts, ‘TSforCIEE_latlong.csv’)</p>
 <p>example string:</p>
+<p>c(‘Barnstable County’, ‘Berkshire County’, ‘Bristol County’, ‘Dukes County’, ‘Essex County’)</p>
 <pre class="r"><code>strs &lt;- c('ARCTIC_OCEAN_DRIFTING_STATION_SEVERNYI_POLYUS_19_Nansen_closing_net_333_um_mesh_3090_85.9_-47.0333', 
        'BARENTS_SEA_PERSEY_Nansen_surface_net_333_um_272_71.9333_33.9167', 
        '_DRIFTING_STATION_SEVERNYI_POLUS_5_Nansen_closing_net_333_um_mesh_4372_86.0167_102.433', 
@@ -245,7 +299,6 @@ ymd(x)</code></pre>
 
 str_extract(strs, '(-?\\d*\\.\\d*_-?\\d*\\.\\d*)')</code></pre>
 <pre><code>## [1] &quot;85.9_-47.0333&quot;   &quot;71.9333_33.9167&quot; &quot;86.0167_102.433&quot; &quot;80.9_-161.533&quot;</code></pre>
-</div>
 </div>
 
 
