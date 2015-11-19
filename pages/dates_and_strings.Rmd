@@ -1,0 +1,251 @@
+## Setup
+
+###Etherpad for today:
+
+* [https://etherpad.wikimedia.org/p/OIPYxZsBxk](https://etherpad.wikimedia.org/p/OIPYxZsBxk)
+
+
+###Libraries to install
+
+```{r, eval = FALSE}
+install.packages('lubridate')
+install.packages('stringr')
+```
+
+```{r}
+library(lubridate)
+library(stringr)
+```
+
+
+###Websites that will be helpful today:
+
+* regex tutorial: [http://regexone.com/lesson/0](http://regexone.com/lesson/0)
+
+* regex testing: [https://regex101.com/#python](http://regexone.com/lesson/0)
+
+Go to regex101.com (the link above) and copy and paste the following into the 
+test string box. 
+
+
+```{r, eval = FALSE}
+Citations
+Associations between fossil diversity and environmental conditions are frequently assessed using globally averaged environmental proxies (Peters & Foote, 2002; Mayhew et al., 2008; Hannisdal & Peters, 2011; Peters et al., 2013)
+
+As nations struggle to support marine protected areas (MPAs) that cross international borders, the maintenance of overall range size, and connectivity among ranges, will only increase in importance (Wells & Day, 2004; Moffitt et al., 2011)
+
+
+Challenge strings - get the latitude and longitude
+
+ARCTIC_OCEAN_DRIFTING_STATION_SEVERNYI_POLYUS_19_Nansen_closing_net_333_um_mesh_3090_85.9_-47.0333
+
+BARENTS_SEA_PERSEY_Nansen_surface_net_333_um_272_71.9333_33.9167
+
+_DRIFTING_STATION_SEVERNYI_POLUS_5_Nansen_closing_net_333_um_mesh_4372_86.0167_102.433
+
+POLAR_BASIN_DRIFTING_STATION_SEVERNYI_POLUS_2_Nansen_closing_net_333_um_mesh_3464_80.9_-161.533
+```
+
+Slides for today:
+
+* on their way
+
+
+--------------------------------------------------------------------------------
+
+This is a hodge podge for now. Will update asap. The setup is the most important part. 
+
+String manipulation in R
+
+What do I want to cover today?
+
+as.Date
+- different date formats
+- POSIX; origin
+- ISO 8601 - Representation of dates and times
+- today
+- now
+
+lubridate
+- makes your life a hundred times easier
+
+- dates
+- what is a date object?
+- using lubridate
+- converting dates from weird string formats
+- how should you do your dates???
+I say year - month - day
+
+
+What are regular expressions??
+
+- a language for pattern matching in strings
+- it's a way for you to do really, really string matching - find and/or replace
+
+
+
+literals + metacharacters
+
+literals
+- exactly what they are
+
+metacharacters
+- things that change how you interpret the literals (these characters do something other than what they are)
+
+e.g., 
+?, *, [], ^, \$, (), \
+
+. 
+
+grep - find a pattern in a character vector
+
+
+```{r}
+
+mms <- c('M. Mouse', 'm. mouse', 'Mickey Mouse', 'mick. mouse')
+
+grep(pattern = 'Mouse', x = mms)
+grep(pattern = 'Mouse', x = mms, value = TRUE)
+
+grep(pattern = 'Mouse', x = mms, value = FALSE, ignore.case = TRUE)
+grep(pattern = 'Mouse', x = mms, value = TRUE, ignore.case = TRUE)
+
+
+
+
+
+# Introduction to regular expressions
+
+
+
+
+
+# returns logical vector
+#grepl(pattern = 'Mouse', x = mms)
+
+
+
+
+```
+
+gsub - find and replace
+
+
+
+# Regular expression: patterns
+
+* Characters
+    - `a`, `Z`, `5`, `@`
+* Character sets
+    - `[aeiou]` some set of characters
+    - `[^aeiou]` ...or not those characters!
+    - `[a-zA-Z]` ...or a range
+    - `[[:alpha:]]` ...or a POSIX character class
+* Any character
+    - `.`
+
+# Regular expression: patterns
+
+
+* Anchors
+    - `^stuff` at start of line
+    - `stuff$` at end of line
+    - `\<stuff\>` as its own word
+* Quantifiers
+    - `?` zero or one
+    - `*` zero or more (any)
+    - `+` one or more (at least one)
+    - `{n}` exactly _n_
+    - `{,n}` no more than _n_
+    - `{n,}` at least _n_
+* Alternation
+    - `foo|bar` ...one of two possible patterns
+
+
+# Escaping
+
+> * What does `a+` match?
+    - is it the literal {`a+`}?
+    - or is it {`a`, `aa`, `aaa`, ...}?
+    - answer: it [depends](http://www.regular-expressions.info/refflavors.html)!
+
+
+Date parsing
+- parsing --> reading strings
+
+
+### Useful time functions in R and the POSIXlt gotcha
+```{r}
+now()
+
+today() # really handy for creating time stamps
+
+as.numeric(today())
+
+posix_time <- as.numeric(today())
+
+posix_time
+
+
+origin
+
+as.Date(posix_time, origin = '1970-01-01')
+as.Date(posix_time, origin = origin)
+
+x <- c('20010101', '2001.01.01', '2001..01..01', '2001_01_01', 
+       '01/01/01', '2001, January, 1', '2001,_January, 1')
+ymd(x)
+
+test <- as.Date('2015-11-19', '%Y-%m-%d')
+
+```
+
+regex101
+
+Citations
+\([^(MPAs)].*\)
+
+challenge strings
+(-?\d*\.\d*_-?\d*\.\d*)
+
+stringr
+
+
+regular expressions
+
+
+
+library(dplyr)
+library(stringr)
+
+
+
+ll_regex <- '(-?\\d*.\\d*(_)-?\\d*.\\d*)$'
+extracted <- str_extract(ts$SampleID, ll_regex)
+lat_long <- str_split_fixed(extracted, "_", 2)
+#lat_long
+
+ts$Lat <- lat_long[, 1]
+ts$Lon <- lat_long[, 2]
+
+write.csv(ts, 'TSforCIEE_latlong.csv')
+
+example string:
+
+
+
+
+```{r}
+
+strs <- c('ARCTIC_OCEAN_DRIFTING_STATION_SEVERNYI_POLYUS_19_Nansen_closing_net_333_um_mesh_3090_85.9_-47.0333', 
+       'BARENTS_SEA_PERSEY_Nansen_surface_net_333_um_272_71.9333_33.9167', 
+       '_DRIFTING_STATION_SEVERNYI_POLUS_5_Nansen_closing_net_333_um_mesh_4372_86.0167_102.433', 
+       'POLAR_BASIN_DRIFTING_STATION_SEVERNYI_POLUS_2_Nansen_closing_net_333_um_mesh_3464_80.9_-161.533'
+       )
+
+str_extract(strs, '(-?\\d*\\.\\d*_-?\\d*\\.\\d*)')
+
+```
+
+
+

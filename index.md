@@ -7,6 +7,8 @@ description: Minimal tutorial on making a simple website with GitHub Pages
 
 ### News - November 17, 2015
 
+[Dates and strings](pages/dates_and_strings.html)
+
 [Data mashups](pages/data_mashups.html)
 
 [Tidy Data Code](pages/nov_3.html)
