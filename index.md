@@ -7,6 +7,8 @@ description: Minimal tutorial on making a simple website with GitHub Pages
 
 ### News - November 17, 2015
 
+[Mapping and spatial data using raster](pages/raster_tutorial.html)
+
 [Dates and strings](pages/dates_and_strings.html)
 
 [Data mashups](pages/data_mashups.html)

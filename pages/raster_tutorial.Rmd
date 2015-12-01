@@ -1,0 +1,313 @@
+#### Setup
+
+Etherpad for today: [https://etherpad.wikimedia.org/p/nIvb84mY8r](https://etherpad.wikimedia.org/p/nIvb84mY8r)  
+
+Today we will be doing some work with spatial data. If the internet cooperates, 
+we'll start with some basics making and plotting points on a quick and dirty map using ggplot.   
+
+When you get to class however, install the following packages  
+
+```{r, echo = TRUE, eval = FALSE}
+install.packages('ggmap')
+install.packages('rworldmap')
+install.packages("raster")
+install.packages("rgdal")
+install.packages("sp")
+
+# There is a slight chance that you will need to install the 'ncdf4' package. 
+# But because it's slow, I'm going to leave it commented out in the case that we 
+# don't need it.
+#install.packages('ncdf4')
+```
+
+After you've gotten that going, download these data files:
+
+* [Sea surface temperature annual averages (1969 - 2011)](datasets/small_sst_netcdf.nc)
+    - Created from the HadSST dataset [http://www.metoffice.gov.uk/hadobs/hadisst/](http://www.metoffice.gov.uk/hadobs/hadisst/)
+
+* [Cumulative human impacts off the Califoria Coast](datasets/SF_coast.tif)
+    - The original data can be found here [https://www.nceas.ucsb.edu/globalmarine/ca_current](https://www.nceas.ucsb.edu/globalmarine/ca_current)
+
+**Super useful cheatsheet for spatial stuff in R!**
+
+* [https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/OverviewCoordinateReferenceSystems.pdf](https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/OverviewCoordinateReferenceSystems.pdf)
+
+--------------------------------------------------------------------------------
+
+#### Worldmap warm-up
+
+We'll start with a simple world map. Just because these can be super useful and 
+is a good 'pick-me-up' when you are feeling demoralised by R.
+
+```{r}
+library(ggplot2)
+library(rworldmap)
+
+# We have to tell R to load the world map data
+# There are multiple worldmaps out there, with a high resolution version in the
+# package mapdata if you're interested
+
+worldmap <- map_data(map = "world")
+
+# For interest you can take a look at the data for the worldmap
+# Since it is going to play with ggplot, you'll notice that it has to be a 
+# data.frame, which is different than the majority of spatial objects you will
+# come across.
+str(worldmap)
+
+# Plot entire world map with sites
+# Note - we have to group, otherwise the map goes crazy and connects ALL the dots
+# and takes forever
+ggplot(data = worldmap, aes(x = long, y = lat, group = group)) +
+  geom_polygon() + 
+  theme_bw() +
+  geom_point(aes(x = -71.0359052, y = 42.312449), colour = 'red')
+
+#48.664799, -123.467094
+
+```
+
+Another quick and dirty way to make a plot is to use the ggmap extension of ggplot.
+
+```{r}
+library(ggmap)
+
+# Notice that the longitude is actually x! 
+map <- get_map(location = c(lon = -122.4263441, lat = 37.8161694), zoom = 8, maptype = 'satellite')
+ggmap(map)
+
+
+map <- get_map(location = c(lon = -122.4263441, lat = 37.8161694), zoom = 13, maptype = 'satellite')
+ggmap(map)
+
+# option for saving any ggplot
+#ggsave(filename = 'your_path_here/filename.png')
+```
+
+Often cleaner graphics are produced when you use simple shapefiles, but I often 
+have a hard time tracking them down, and I'm no expert in them at all so 
+unfortunately we won't spend time on using them. Instead we're going to look at 
+extracting and manipulating geospatial data that we may want to plot, but also 
+that we may want to extract as covariates.
+
+--------------------------------------------------------------------------------
+
+
+Rasters (Adapted from: a NEON tutorial [http://neondataskills.org/R/Raster-Data-In-R/](http://neondataskills.org/R/Raster-Data-In-R/))
+
+
+
+```{r, eval = FALSE, echo = FALSE}
+What things have caused me trouble:
+
+- CRS
+what is a CRS
+ = coordinate reference system
+# it's a standardised way of describing a location
+ it is important to know what the CRS of the data that you are working with is because you most likely will need to combine this with other data
+
+1. Projection: projInfo(type = "proj")
+2. Datum: projInfo(type = "datum")
+3. Ellipsoid: projInfo(type = "ellps")
+
+```
+
+
+
+```{r, eval = FALSE, echo = FALSE}
+library(raster)
+library(rgdal)
+# again, not sure if we need ncdf
+#library(ncdf)
+
+test <- raster('small_sst_netcdf.nc')
+
+```
+
+
+
+```{r, echo = FALSE, eval = FALSE}
+# Preparing a smaller version of the hadsst data
+library(raster)
+library(rgdal)
+library(sp)
+library(chron)
+
+loadHadSST1 <- function(directory="./", hadsstFilename="HadISST_sst.nc") {
+    f1 <- paste0(directory, hadsstFilename)
+    b <- raster::brick(f1)
+    raster::NAvalue(b) <- -1000
+    return(b)
+}
+
+hadrast <- loadHadSST1(directory = 'Meta_analysis_ms/master_data/')
+
+getSSTAnnualRasters <- function(hadsst_raster, years = 1969:2011) {
+    mean_rasts <- 
+    apply(matrix(years), 1, function(x) {
+    #browser()
+        yearIDx <- which(chron::years(hadsst_raster@z$Date) == x)
+        subset_x <- raster::subset(hadsst_raster, yearIDx) 
+        means <- mean(subset_x, na.rm = TRUE)
+        names(means) <- as.character(x)
+        return(means)
+    })
+    #return(mean_rasts)
+    mean_brick <- raster::brick(mean_rasts)
+    mean_brick <- raster::setZ(mean_brick, as.Date(paste0(years, '-01-01')), 'Date')
+    return(mean_brick)
+}
+
+getSSTAvgOverYears <- function(hadsst_raster = b, years = 1969:2011) {
+    yearIDs <- which(chron::years(hadsst_raster@z$Date) %in% years)
+    subset_x <- raster::subset(hadsst_raster, yearIDs)
+    SSTAvgOverYears <- mean(subset_x, na.rm = TRUE)
+    return(SSTAvgOverYears)
+    }
+
+
+ann_hadrast <- getSSTAnnualRasters(hadrast)
+
+# Make annual sst raster for  1969:2011
+e <- as(extent(-180, 0, 0, 90), 
+       'SpatialPolygons')
+proj4string(e) <- CRS("+proj=longlat +datum=WGS84")
+
+smaller_hadrast <- crop(ann_hadrast, e)
+
+writeRaster(smaller_hadrast, 'sst_NA.nc', format = 'CDF')
+
+plot(smaller_hadrast[[1]])
+
+
+# Save this raster as in netcdf format (This nearly killed me :| I hate spatial 
+# data)
+# http://r-sig-geo.2731867.n2.nabble.com/Rasterbrick-to-netCDF-td7582376.html
+
+library(ncdf4)
+library(lubridate)
+
+# Here's the trick: convert your data to a matrix
+data <- as.matrix(ann_hadrast)
+
+# Now that we have the data we need, make output file in the correct format
+
+# Create dimensions lon, lat, level and time
+dim_lon  <- ncdim_def('longitude', 'degrees_east', seq(-179.75,179.75,by=1))
+dim_lat  <- ncdim_def('latitude', 'degrees_north', seq(89.75,-89.75,by=-1))
+dim_lev  <- ncdim_def('level', 'level/index', 1)
+dim_time <- ncdim_def(name = 'Year', units = "years", vals = year(ann_hadrast@z$Date), unlim=T)
+
+# Create a new variable "precipitation", create netcdf file, put updated contents on it and close file
+# Note that variable "data" is the actual contents of the original netcdf file
+var_out <- ncvar_def(name = 'average_annual_sst', units = 'deg_C', dim = list(dim_lon,dim_lat,dim_lev,dim_time), missval = 9.e20)
+ncid_out <- nc_create('small_sst_netcdf.nc', var_out)
+ncvar_put(ncid_out, var_out, data, start=c(1, 1, 1, 1), count=c(360, 180, 1, 43))
+nc_close(ncid_out)
+
+# Just doing some testing to make sure this worked
+test <- raster('small_sst_netcdf.nc')
+test
+plot(test)
+plot(test, ylim = c(0, 90))
+
+```
+
+Preparing a cropped version of the cumulative human impact data
+
+```{r, echo = FALSE, eval = FALSE}
+
+#########
+# California Current Data
+#########
+cal_map <- raster("Human_Cumulative_Impacts/full_self_calc.tif")
+
+plot(cal_map)
+
+plot(cal_map, xlim = c(-135, -110), ylim = c(20, 50))
+
+points(cbind(long, lat), pch=20, cex=5)
+
+# Make annual sst raster for  1969:2011
+e <- as(extent(-124.713823, -121.582871, 36.028151, 38.292142), 
+       'SpatialPolygons')
+proj4string(e) <- CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0")
+
+sf <- crop(cal_map, e)
+plot(sf)
+
+writeRaster(sf, 'SF_coast.tif', format = 'GTiff')
+
+
+site <- c('San Pablo Bay', 'By the airport', 'Monterey Bay', 'Offshore Monterey', 
+          'Way offshore Monterey', 'Golden Gate Bridge', 'Gulf of the Farallones', 
+          'NFIS Marine Reserve', 'Offshore on this same line')
+lon  <- c(-122.392266, -122.331935, -122.066719, -122.652138, -124.6, 
+          -122.472611, -122.819416, -123.100375, -124.6)
+lat  <- c(38.067847, 37.650587, 36.773023,  36.770929, 36.770929, 37.823769, 
+          37.817623, 37.817623, 37.765124)
+
+sites <- data.frame("site" = site, "lat" = lat, "lon" = lon)
+coordinates(sites) <- c(3, 2)
+
+# Check the projection just to be sure it's WGS84
+projection(sf)
+
+imp_vals <- extract(sf, sites, buffer = 100, small = T)
+# Yay! the land values are just NA. The others meanwhile look pretty good.
+imp_vals
+
+plot(sf)
+points(coordinates(sites), pch = 19, cex = 0.5)
+
+boxplot(unlist(imp_vals))
+
+
+```
+
+
+
+```{r, echo = FALSE, eval = FALSE}
+# Gets the average temperature for each year, given a single year or a range of 
+# years.
+# Returns a raster brick object with the average of each year.
+# Probably could rewrite this with a stackApply instead of apply wrapping 
+# raster::calc()
+getSSTAnnualRasters <- function(hadsst_raster, years = 1969:2011) {
+    mean_rasts <- 
+    apply(matrix(years), 1, function(x) {
+    #browser()
+        yearIDx <- which(chron::years(hadsst_raster@z$Date) == x)
+        subset_x <- raster::subset(hadsst_raster, yearIDx) 
+        means <- mean(subset_x, na.rm = TRUE)
+        names(means) <- as.character(x)
+        return(means)
+    })
+    #return(mean_rasts)
+    mean_brick <- raster::brick(mean_rasts)
+    mean_brick <- raster::setZ(mean_brick, as.Date(paste0(years, '-01-01')), 'Date')
+    return(mean_brick)
+}
+```
+
+
+
+--------------------------------------------------------------------------------
+
+
+```{r, eval = FALSE, echo = FALSE}
+
+library("devtools")
+install_github("ropensci/rebird")
+
+library(rebird)
+
+
+out <- ebirdgeo(species = 'spinus tristis', lat = 42, lng = -76)
+head(out)
+
+
+
+deedee <- ebirdgeo(species = 'poecile atricapillus', back = 30, dist = 50)
+
+```
